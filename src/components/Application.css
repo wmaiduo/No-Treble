@@ -1,0 +1,82 @@
+.sidebar {
+  margin: 0;
+  padding: 0;
+  width: 200px;
+  background-color: #19283d; 
+  height: 100%;
+  overflow: auto;
+  border-right: 5px solid green;
+  
+}
+.heading{
+  color:#04AA6D;
+  display:inline-block;
+  margin-left:1rem;
+}
+
+/* Sidebar links */
+.sidebar a {
+  display: block;
+  color: black;
+  padding: 16px;
+  text-decoration: none;
+  color:white;
+}
+
+/* Active/current link */
+.sidebar a.active {
+  background-color: #04AA6D;
+  color: white;
+}
+
+/* Links on mouse-over */
+.sidebar a:hover:not(.active) {
+  background-color: #555;
+  color: white;
+}
+.fa{
+  padding:8px;
+}
+
+
+@media screen and (max-width: 700px) {
+  .sidebar {
+    width: 100%;
+    height: auto;
+    position: relative;
+  }
+  .sidebar a {float: left;}
+  div.content {margin-left: 0;}
+}
+
+@media screen and (max-width: 400px) {
+  .sidebar a {
+    text-align: center;
+    float: none;
+  }
+}
+.layout{
+  margin: 20px 0;
+  padding: 5px;
+  display: flex;
+  height:100vh;
+
+}
+.searchbar{
+  background-color:#112035;
+  flex: 1;
+  padding: 10px;
+  height:20vh;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+}
+.searchbar input {
+  width:50rem;
+  height:3rem;
+  border-radius: 20px;
+}
+.fa-search{
+  color:white;
+  padding:5px;
+}

@@ -1,4 +1,4 @@
-const dummyData = [
+const dummyData1 = [
   {
     name: "Bedtime Stories",
     singer: "Jay Chou",
@@ -28,4 +28,34 @@ const dummyData = [
   },
 ];
 
-export {dummyData};
+const dummyData2 = [
+  {
+    name: "Fly Me to the Moon",
+    singer: "The Macarons Project",
+    cover:
+      "https://e-cdns-images.dzcdn.net/images/cover/f0bc5ad6c844e59f7e832b1b4085ec4b/500x500-000000-80-0-0.jpg",
+    musicSrc: () => {
+      return Promise.resolve(
+        "https://cdns-preview-c.dzcdn.net/stream/c-c2a6681b22273c0b5266a0c969574142-6.mp3"
+      );
+    },
+  },
+  {
+    name: "C'est Si Bon",
+    singer: "Lisa Ono",
+    cover:
+      "https://e-cdns-images.dzcdn.net/images/artist/3acac82be11a17763d8c434a0a8b8518/500x500-000000-80-0-0.jpg",
+    musicSrc:
+      "https://cdns-preview-7.dzcdn.net/stream/c-7d7bd0dcb0c3dcc790c46aea855aba38-5.mp3",
+  },
+  {
+    name: `Solar Sect of Mystic Wisdom ~ Nuclear Fusion (From "Touhou 11")`,
+    singer: "FalKKonE",
+    cover:
+      "https://e-cdns-images.dzcdn.net/images/cover/5c6dffe7d0c6f655bd259373642bec64/500x500-000000-80-0-0.jpg",
+    musicSrc:
+      "https://cdns-preview-e.dzcdn.net/stream/c-e2b854a79f9936186f758d023d53783a-4.mp3",
+  },
+];
+
+export { dummyData1, dummyData2 };

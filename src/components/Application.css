@@ -1,9 +1,9 @@
 .sidebar {
   margin: 0;
   padding: 0;
-  width: 200px;
+  width: 25%;
   background-color: #19283d; 
-  height: 100%;
+  height: 110vh;
   overflow: auto;
   border-right: 5px solid green;
   
@@ -59,12 +59,13 @@
   margin: 20px 0;
   padding: 5px;
   display: flex;
-  height:100vh;
+ 
+  
 
-}
+ }
 .searchbar{
   background-color:#112035;
-  flex: 1;
+  width:100%;
   padding: 10px;
   height:20vh;
   display:flex;
@@ -72,11 +73,37 @@
   align-items: center;
 }
 .searchbar input {
-  width:50rem;
+  width:100%;
   height:3rem;
   border-radius: 20px;
+  background: white url(/public/images/Search.png) right no-repeat;
+  background-size: 3rem 3rem;
+  padding: 0 1rem 0 1rem;
+  box-shadow: 5px 10px #888888;
+
 }
-.fa-search{
-  color:white;
-  padding:5px;
+
+
+.cards{
+  background-color:#112035;
+  width: 100%;
+  height:50vh;
+  padding: 10px;
+  display:flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
+.container{
+  width:70%;
+
+}
+.cardimage{
+  width:30%;
+  height:20vh;
+  background: url(/public/images/Screenshot.png);
+  margin-right:1rem;
+  border-radius: 1.2rem;
+  box-shadow: 5px 10px #888888;
+  
+}
+

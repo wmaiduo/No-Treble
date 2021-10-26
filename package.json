@@ -17,7 +17,8 @@
     "express": "^4.16.3",
     "react": "^16.5.2",
     "react-dom": "^16.5.2",
-    "ytdl-core": "^4.9.1"
+    "ytdl-core": "^4.9.1",
+    "ytsr": "^3.5.3"
   },
   "devDependencies": {
     "@babel/core": "^7.0.0",

@@ -94,16 +94,34 @@
   justify-content: center;
 }
 .container{
-  width:70%;
-
-}
-.cardimage{
-  width:30%;
-  height:20vh;
-  background: url(/public/images/Screenshot.png);
+  width:100%;
+  
+ }
+.cardlist{
+  width:100%;
+  height:5vh; 
   margin-right:1rem;
   border-radius: 1.2rem;
-  box-shadow: 5px 10px #888888;
+  box-shadow: 2px 2px #888888;  
+  display:flex;
+  justify-content: space-between;
+}
+.listcontent{
+color:white;
+width:20%;
+text-align: center;
   
+}
+.listcontainer{
+  width:20%;
+  display:flex;
+}
+.listimg{
+  width:2rem;
+  height:2rem;
+  border-radius: 50%;
+}
+.controller{
+  background-color:orange;
 }
 

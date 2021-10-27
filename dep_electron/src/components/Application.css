@@ -97,9 +97,9 @@
   width:70%;
 
 }
-.cardimage{
-  width:30%;
-  height:20vh;
+.cardlist{
+  width:100%;
+  height:10vh;
   background: url(/public/images/Screenshot.png);
   margin-right:1rem;
   border-radius: 1.2rem;

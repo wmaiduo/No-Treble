@@ -1,14 +1,12 @@
-import React from 'react'
+import React from 'react';
 
 function Controller() {
   return (
-    <div>
-      <i class="fa fa-toggle-left"></i>
-      <i class="fa fa-toggle-right"></i>
-
-      
-    </div>
+    <div className = "controller">  
+    <h1> Controller</h1>
+    </div>   
+    
   )
 }
 
-export default Controller
+export default Controller;

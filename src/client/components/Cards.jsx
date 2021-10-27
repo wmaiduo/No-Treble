@@ -1,17 +1,41 @@
-import React from 'react'
+import React, { useState, useEffect } from "react";
+import DeletIcon from '../public/images/delete_outline-24px.svg';
+import Screenshot from '../public/images/Screenshot.png';
 
-function Cards() {
-  return (
+function Cards(props) {
+  console.log(props.data);
+  const [favorite, setFavorite] = useState([]);
+  const addToFavorite = id => {
+    if (!favorite.includes(id)) setFavorite(fav=> [...fav,id]);      
+  };
+  console.log(favorite);
+
+  // const removeFavorite = id => {
+  //   let index = favorite.indexOf(id);
+  //   console.log(index);
+  //   let temp = [...favorite.slice(0, index), ...favorite.slice(index + 1)];
+  //   setFavorite(temp);
+  // };
+  
+  const songlist = props.data.map((song)=>(
+    <div className="cardlist"key={song.id}>
+      <div className="listcontainer">
+        <div className="listcontent">{song.id} </div>
+        <div className="listcontent"><img className= "listimg" src={Screenshot}/></div>
+      </div>
+      <div className="listcontent">{song.title}</div>
+      <div className="listcontent">{song.duration}</div>
+      <div className="listcontent"><span className="far fa-heart" onClick ={() => addToFavorite(song.id)}></span></div>
+      <div className="listcontent"><img src={DeletIcon}/></div>
+    </div>     
+)
+  ) 
+
+  return (  
     <div className="cards">
-       <div className="cardimage"></div>
-       <div className="cardimage"></div>
-       <div className="cardimage"></div>
-       <div className="cardimage"></div>
-       <div className="cardimage"></div>
-       <div className="cardimage"></div>
-
-     </div>
-  )
+      {songlist}
+   </div>  
+  );
 }
 
-export default Cards
+export default Cards;

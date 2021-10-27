@@ -1,4 +1,4 @@
-//This context is created because musicData would be needed across different components for searching and rendering purposes
+//This context is created to store the information returned from DeezerAPI and is needed for rendering
 import React, { createContext, useState } from "react";
 
 export const SearchContext = createContext();

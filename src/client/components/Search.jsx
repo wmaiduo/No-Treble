@@ -21,14 +21,13 @@ const Search = () => {
   useEffect(() => {
     const timeOutID = setTimeout(() => {
       Promise.resolve(
-
         //https://cors-anywhere.herokuapp.com/ is added to avoid CORS error
         axios.get(
           `https://cors-anywhere.herokuapp.com/https://api.deezer.com/search?q=${search.value}`
         )
       ).then((res) => {
         if(res.data.error) {
-          setMusicData(null);
+          setMusicData([]);
         } else {
         setMusicData(res.data.data);
         }

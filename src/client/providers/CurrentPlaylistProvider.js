@@ -11,7 +11,7 @@ export default function CurrentPlaylistProvider(props) {
   const [options, setOptions] = useState({
     theme: "dark",
     mode: "full",
-    remove: true,
+    remove: false,
     autoPlay: true,
     quietUpdate: true,
     clearPriorAudioLists: true,

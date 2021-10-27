@@ -1,3 +1,4 @@
+//this component is used in ./SearchPage.jsx
 import React, { useContext } from "react";
 
 import Add from "@mui/icons-material/Add";

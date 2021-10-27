@@ -5,21 +5,9 @@ import Searchbar from "./components/Searchbar.jsx";
 import Cards from "./components/Cards.jsx";
 import Controller from "./components/Controller.jsx";
 import MusicPlayer from "./components/MusicPlayer";
-
-
-import { dummyData2 } from "../dummy_database/dummyAudioListPaths";
-
-import { CurrentPlayListContext } from "./providers/currentPlaylistProvider";
+import MusicPlayerContextUsageExample from "./MusicPlayerContextUsageExample";
 
 export default function App() {
-  const { options, currentAudioLists, addSongsToCurrentPlaylist, replaceCurrentPlaylist } = useContext(CurrentPlayListContext);
-
-  useEffect(() => {
-    setTimeout(() => {
-      replaceCurrentPlaylist(dummyData2)
-    }, 3000);
-  }, [replaceCurrentPlaylist]);
-
   return (
       <div className="layout">
         <Sidebar />
@@ -30,5 +18,8 @@ export default function App() {
         </div>
         <MusicPlayer />
       </div>
+
+      // uncomment the line below and comment things above to see how MusicPlayerContextUsageExample work
+      // <MusicPlayerContextUsageExample />
   );
 }

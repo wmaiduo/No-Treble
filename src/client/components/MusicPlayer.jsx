@@ -7,7 +7,6 @@ import { CurrentPlayListContext } from "../providers/currentPlaylistProvider";
 
 const MusicPlayer = () => {
   const { options } = useContext(CurrentPlayListContext);
-  console.log("options:", options)
   return <ReactJkMusicPlayer {...options} />;
 };
 

@@ -4,16 +4,19 @@ import Sidebar from './components/Sidebar';
 import Searchbar from './components/Searchbar';
 import Cards from './components/Cards';
 import Controller from './components/Controller';
-import 'font-awesome/css/font-awesome.min.css';
+import songsdata from '../data/dummydata.json'
 
 export default class App extends Component {
+   state= {
+    songs: songsdata,
+  };
   render() {
     return (
       <div className="layout">
         <Sidebar />
         <div className="container">
-          <Searchbar/>
-          <Cards/>
+          <Searchbar/>         
+          <Cards data = {this.state.songs}/>
           <Controller/>
         </div>
       </div>

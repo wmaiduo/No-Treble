@@ -5,7 +5,7 @@ export const SearchContext = createContext();
 
 export default function SearchProvider (props) {
     //initialize with null since the search bar is empty in the beginning
-    const [musicData, setMusicData] = useState(null);
+    const [musicData, setMusicData] = useState([]);
 
     //SetMusicData is used in Search.jsx
     const ProviderData = {musicData, setMusicData};

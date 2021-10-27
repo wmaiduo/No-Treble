@@ -5,6 +5,8 @@ import Cards from "./components/Cards.jsx";
 import Controller from "./components/Controller.jsx";
 import MusicPlayer from "./components/MusicPlayer";
 import Search from "./components/Search";
+import SearchPage from "./components/SearchPage"
+
 import MusicPlayerContextUsageExample from "./MusicPlayerContextUsageExample";
 
 export default function App() {
@@ -15,6 +17,7 @@ export default function App() {
           <Search />
           <Cards />
           <Controller />
+          <SearchPage />
         </div>
         <MusicPlayer />
       </div>

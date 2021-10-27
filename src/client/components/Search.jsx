@@ -1,6 +1,9 @@
 import React, { useState, useEffect, useContext } from "react";
 import axios from "axios";
 
+import Cancel from "@mui/icons-material/Cancel"
+import { IconButton } from "@mui/material"
+
 import { SearchContext } from "../providers/SearchProvider";
 
 const Search = () => {
@@ -11,13 +14,11 @@ const Search = () => {
     setSearch({ value: e.target.value });
   };
 
+  const onClickHandler = (e) => {
+    setSearch({ value: ""})
+  }
+
   useEffect(() => {
-    // Promise.resolve(
-    //     axios.get(`https://cors-anywhere.herokuapp.com/https://api.deezer.com/search?q=${search}`)
-    // ).then(value => {
-    //     console.log(value);
-    //     setMusicData({value});
-    // })
     const timeOutID = setTimeout(() => {
       Promise.resolve(
 
@@ -36,10 +37,6 @@ const Search = () => {
     return () => clearTimeout(timeOutID);
   }, [search]);
 
-  useEffect(() => {
-    console.log("music data shown: ", musicData)
-  }, [musicData])
-
   return (
     <div className="searchbar">
       <input
@@ -48,6 +45,7 @@ const Search = () => {
         value={search.value}
         onChange={onChangeHandler}
       />
+      {search.value && <IconButton onClick={onClickHandler}><Cancel style={{fill: "white"}}/></IconButton>}
     </div>
   );
 };

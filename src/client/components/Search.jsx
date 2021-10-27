@@ -1,9 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import axios from "axios";
+
+import { SearchContext } from "../providers/SearchProvider";
 
 const Search = () => {
   const [search, setSearch] = useState({ value: "" });
-  const [musicData, setMusicData] = useState(null);
+  const {musicData, setMusicData} = useContext(SearchContext);
 
   const onChangeHandler = (e) => {
     setSearch({ value: e.target.value });

@@ -2,10 +2,12 @@ import React, { createContext, useState } from "react";
 
 import { dummyData1 } from "../../dummy_database/dummyAudioListPaths";
 
-export const CurrentPlayListContext = createContext();
+export const CurrentPlaylistContext = createContext();
 
-export default function CurrentPlayListProvider(props) {
+export default function CurrentPlaylistProvider(props) {
+    //initialize currentAudioList with dummyData1 
   const [currentAudioLists, setCurrentAudioLists] = useState(dummyData1);
+  //set options for the Music Player in components/MusicPlayer
   const [options, setOptions] = useState({
     theme: "dark",
     mode: "full",
@@ -70,12 +72,13 @@ export default function CurrentPlayListProvider(props) {
     currentAudioLists,
     addSongsToCurrentPlaylist,
     replaceCurrentPlaylist,
-    setOptions
+    setCurrentAudioLists,
+    setOptions,
   };
 
   return (
-    <CurrentPlayListContext.Provider value={providerData}>
+    <CurrentPlaylistContext.Provider value={providerData}>
       {props.children}
-    </CurrentPlayListContext.Provider>
+    </CurrentPlaylistContext.Provider>
   );
 }

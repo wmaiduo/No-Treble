@@ -19,7 +19,7 @@ export default function App() {
         <MusicPlayer />
       </div>
 
-      // uncomment the line below and comment things above to see how MusicPlayerContextUsageExample work
+      // uncomment the line below and comment things above until return to see how MusicPlayerContextUsageExample work
       // <MusicPlayerContextUsageExample />
   );
 }

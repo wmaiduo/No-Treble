@@ -1,21 +1,21 @@
 import React, { useState, useEffect } from "react";
+import axios from 'axios';
 
 const Search = () => {
-  const [search, setSearch] = useState({
-    songs: null,
-    loading: false,
-    value: "",
-  });
+  const [search, setSearch] = useState({value: "",});
+  const [musicData, setMusicData] = useState({})
 
   const onChangeHandler = (e) => {
-    setSearch({
-        ...search,
-        value: e.target.value
-    });
+    setSearch({value: e.target.value});
   };
 
   useEffect(() => {
-    console.log(search);
+    Promise.resolve(
+        axios.get(`https://cors-anywhere.herokuapp.com/https://api.deezer.com/search?q=${search}`)
+    ).then(value => {
+        console.log(value);
+        setMusicData({value});
+    })
   }, [search]);
 
   return (

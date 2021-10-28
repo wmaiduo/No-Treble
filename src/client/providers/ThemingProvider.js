@@ -5,7 +5,7 @@ import { CurrentPlaylistContext } from "./currentPlaylistProvider";
 
 export const ThemingContext = createContext();
 
-export default function SearchProvider(props) {
+export default function ThemingProvider(props) {
   const { options, setOptions } = useContext(CurrentPlaylistContext);
   //initialize with null since the search bar is empty in the beginning
   const dark = {

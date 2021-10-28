@@ -1,9 +1,12 @@
 //This context is created to store the information returned from DeezerAPI and is needed for rendering
-import React, { createContext, useState } from "react";
+import React, { createContext, useState, useContext } from "react";
+
+import { CurrentPlaylistContext } from "./currentPlaylistProvider";
 
 export const ThemingContext = createContext();
 
 export default function SearchProvider(props) {
+  const { options, setOptions } = useContext(CurrentPlaylistContext);
   //initialize with null since the search bar is empty in the beginning
   const dark = {
     name: "dark",
@@ -26,9 +29,17 @@ export default function SearchProvider(props) {
   const switchTheme = () => {
     if (theme.name === "light") {
       setTheme(dark);
+      setOptions({
+        ...options,
+        theme: "dark"
+      })
     }
     if (theme.name === "dark") {
       setTheme(light);
+      setOptions({
+        ...options,
+        theme: "light"
+      })
     }
   };
 

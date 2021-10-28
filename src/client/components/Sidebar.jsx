@@ -1,8 +1,15 @@
-import React, { useState, useEffect } from "react";
-
+import React, { useState, useContext } from "react";
 import styled from "styled-components";
 
+import { IconButton } from "@mui/material";
+import lightMode from "@mui/icons-material/lightMode";
+import darkMode from "@mui/icons-material/DarkMode";
+
+import { ThemingContext } from "../providers/ThemingProvider";
+
 const SidebarContainer = styled.div`
+  display: flex;
+  flex-direction: column;
   margin: 0;
   padding: 0;
   border-left: 0;
@@ -38,9 +45,39 @@ const Link = styled.a`
       : "transparent"};
 `;
 
+const ButtomDiv = styled.div`
+  margin-top: auto;
+  margin-bottom: 9vh;
+  padding-left: 2em;
+`;
+
+const DarkMode = styled(darkMode)`
+  color: ${(props) => props.theme.primary};
+`;
+
+const LightMode = styled(lightMode)`
+  color: ${(props) => props.theme.primary};
+`;
+
 function Sidebar() {
   const [active, setActive] = useState(null);
   const [hover, setHover] = useState(null);
+  const { theme, switchTheme } = useContext(ThemingContext);
+
+  let mode;
+  if (theme.name === "light") {
+    mode = (
+      <IconButton onClick={() => switchTheme()}>
+        <LightMode />
+      </IconButton>
+    );
+  } else if (theme.name === "dark") {
+    mode = (
+      <IconButton onClick={() => switchTheme()}>
+        <DarkMode />
+      </IconButton>
+    );
+  }
 
   return (
     <React.Fragment>
@@ -97,6 +134,7 @@ function Sidebar() {
         >
           <i className="fa fa-camera"></i>ALBUM
         </Link>
+        <ButtomDiv>{mode}</ButtomDiv>
       </SidebarContainer>
     </React.Fragment>
   );

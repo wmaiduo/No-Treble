@@ -8,14 +8,14 @@ import ThemeProvider from "./providers/ThemingProvider";
 import "font-awesome/css/font-awesome.min.css";
 
 ReactDOM.render(
-  <ThemeProvider>
-    <FavoriteProvider>
-      <CurrentPlayListProvider>
+  <CurrentPlayListProvider>
+    <ThemeProvider>
+      <FavoriteProvider>
         <SearchProvider>
           <App />
         </SearchProvider>
-      </CurrentPlayListProvider>
-    </FavoriteProvider>
-  </ThemeProvider>,
+      </FavoriteProvider>
+    </ThemeProvider>
+  </CurrentPlayListProvider>,
   document.getElementById("root")
 );

@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, useContext } from "react";
 import "./app.css";
 import Sidebar from "./components/Sidebar";
 import Cards from "./components/Cards";
@@ -7,11 +7,12 @@ import MusicPlayer from "./components/MusicPlayer";
 import Search from "./components/Search";
 import SearchPage from "./components/SearchPage.jsx";
 
-import styled, { createGlobalStyle } from "styled-components";
+import { ThemingContext } from "./providers/ThemingProvider";
+import styled, { createGlobalStyle, ThemeProvider } from "styled-components";
 
 const GlobalStyle = createGlobalStyle`
   body {
-    background-color: #112035;
+    background-color: ${props => props.theme.main};
     margin: 0;
     padding: 0;
     border: 0;
@@ -21,26 +22,29 @@ const GlobalStyle = createGlobalStyle`
   }
 `;
 
-export default class App extends Component {
-  state = {
+const App = () => {
+  const state = {
     songs: songsdata,
   };
-  render() {
-    return (
-      <React.Fragment>
+  const { theme } = useContext(ThemingContext);
+  return (
+    <React.Fragment>
+      <ThemeProvider theme={theme}>
         <GlobalStyle />
         <div className="layout">
           <Sidebar />
           <div className="container">
             <Search />
-            {/* <Cards data={this.state.songs} /> */}
+            {/* <Cards data={state.songs} /> */}
             <SearchPage />
           </div>
           <MusicPlayer />
         </div>
-      </React.Fragment>
-      // uncomment the line below and comment things above until return to see how MusicPlayerContextUsageExample work
-      // <MusicPlayerContextUsageExample />
-    );
-  }
-}
+      </ThemeProvider>
+    </React.Fragment>
+    // uncomment the line below and comment things above until return to see how MusicPlayerContextUsageExample work
+    // <MusicPlayerContextUsageExample />
+  );
+};
+
+export default App;

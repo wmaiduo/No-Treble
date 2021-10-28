@@ -1,3 +1,5 @@
+//This component sends request to API to extract data,
+//the data is then saved with SearchProvider.js 
 import React, { useState, useEffect, useContext } from "react";
 import axios from "axios";
 

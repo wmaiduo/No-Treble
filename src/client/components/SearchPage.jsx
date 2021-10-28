@@ -1,3 +1,4 @@
+//this component extracts data from SearchProvider to extract data from API, then each object in the array is passed down to SearchPageCard
 import React, { useContext, useEffect } from "react";
 
 import { SearchContext } from "../providers/SearchProvider";

@@ -5,7 +5,21 @@ import Cards from "./components/Cards";
 import songsdata from "../data/dummydata.json";
 import MusicPlayer from "./components/MusicPlayer";
 import Search from "./components/Search";
-import SearchPage from "./components/SearchPage.jsx"
+import SearchPage from "./components/SearchPage.jsx";
+
+import styled, { createGlobalStyle } from "styled-components";
+
+const GlobalStyle = createGlobalStyle`
+  body {
+    background-color: #112035;
+    margin: 0;
+    padding: 0;
+    border: 0;
+  }
+  * {
+    box-sizing: border-box;
+  }
+`;
 
 export default class App extends Component {
   state = {
@@ -13,16 +27,18 @@ export default class App extends Component {
   };
   render() {
     return (
-      <div className="layout">
-        <Sidebar />
-        <div className="container">
-          <Search />
-          {/* <Cards data={this.state.songs} /> */}
-          <SearchPage />
+      <React.Fragment>
+        <GlobalStyle />
+        <div className="layout">
+          <Sidebar />
+          <div className="container">
+            <Search />
+            {/* <Cards data={this.state.songs} /> */}
+            <SearchPage />
+          </div>
+          <MusicPlayer />
         </div>
-
-        <MusicPlayer />
-      </div>
+      </React.Fragment>
       // uncomment the line below and comment things above until return to see how MusicPlayerContextUsageExample work
       // <MusicPlayerContextUsageExample />
     );

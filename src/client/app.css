@@ -1,13 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=Monoton&display=swap');
+
 .sidebar {
   margin: 0;
   padding: 0;
+  border-left: 0;
   width: 25%;
-  background-color: #19283d; 
-  height: 110vh;
+  background-color: #19283d;
+  height: 100vh;
   overflow: auto;
-  border-right: 5px solid green;
-  
+  border-right: 5px solid #04aa6d;
 }
+
 .heading{
   color:#04AA6D;
   display:inline-block;
@@ -56,12 +59,10 @@
   }
 }
 .layout{
-  margin: 20px 0;
-  padding: 5px;
+  margin: 0;
+  padding: 0;
+  border: 0;
   display: flex;
- 
-  
-
  }
 .searchbar{
   background-color:#112035;

@@ -2,8 +2,14 @@ import React, { useState, useContext } from "react";
 import styled from "styled-components";
 
 import { IconButton } from "@mui/material";
+
 import lightMode from "@mui/icons-material/lightMode";
 import darkMode from "@mui/icons-material/DarkMode";
+import Home from "@mui/icons-material/Home";
+import Favorite from "@mui/icons-material/Favorite";
+import Person from "@mui/icons-material/Person";
+import Album from "@mui/icons-material/Album";
+
 
 import { ThemingContext } from "../providers/ThemingProvider";
 
@@ -33,7 +39,9 @@ const Heading = styled.h1`
 
 const Link = styled.a`
   font-family: "Space Mono", monospace;
-  display: block;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
   color: ${(props) => props.theme.tertiary};
   padding: 3vh 3vh 3vh 5vh;
   text-decoration: none;
@@ -44,6 +52,10 @@ const Link = styled.a`
       ? props.theme.secondary
       : "transparent"};
 `;
+
+const Span = styled.span`
+  margin-left: 1em;
+`
 
 const ButtomDiv = styled.div`
   margin-top: auto;
@@ -91,7 +103,7 @@ function Sidebar() {
             active === "home" ? "active" : hover === "home" ? "hover" : null
           }
         >
-          <span className="fa fa-home" aria-hidden="true"></span>HOME
+          <Home/><Span>HOME</Span>
         </Link>
         <Link
           href="#"
@@ -106,7 +118,7 @@ function Sidebar() {
               : null
           }
         >
-          <i className="fa fa-heart"></i>FAVORITES
+          <Favorite /><Span>FAVORITES</Span>
         </Link>
         <Link
           href="#"
@@ -121,7 +133,7 @@ function Sidebar() {
               : null
           }
         >
-          <i className="fa fa-user"></i>ARTISTS
+          <Person /><Span>ARTISTS</Span>
         </Link>
         <Link
           href="#"
@@ -132,7 +144,7 @@ function Sidebar() {
             active === "album" ? "active" : hover === "album" ? "hover" : null
           }
         >
-          <i className="fa fa-camera"></i>ALBUM
+          <Album /><Span>ALBUM</Span>
         </Link>
         <ButtomDiv>{mode}</ButtomDiv>
       </SidebarContainer>

@@ -1,9 +1,7 @@
 import React, { Component } from "react";
 import "./app.css";
 import Sidebar from "./components/Sidebar";
-import Searchbar from "./components/Searchbar";
 import Cards from "./components/Cards";
-import Controller from "./components/Controller";
 import songsdata from "../data/dummydata.json";
 import MusicPlayer from "./components/MusicPlayer";
 import Search from "./components/Search";

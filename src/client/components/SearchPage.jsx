@@ -7,7 +7,7 @@ import SearchPageCard from "./SearchPageCard";
 
 const SearchPage = () => {
   const { musicData } = useContext(SearchContext);
-  const SearchPageCards = musicData ? musicData.map((musicDatum) => <SearchPageCard key={musicDatum.id} title={musicDatum.title} artist={musicDatum.artist.name} cover={musicDatum.album.cover_small} preview={musicDatum.preview}/>) : null;
+  const SearchPageCards = musicData ? musicData.map((musicDatum) => <SearchPageCard key={musicDatum.id} id={musicDatum.id} title={musicDatum.title} artist={musicDatum.artist.name} cover={musicDatum.album.cover_small} preview={musicDatum.preview}/>) : null;
 
   return (
       <ul>

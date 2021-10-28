@@ -31,7 +31,7 @@ const SearchPageCard = (props) => {
       <IconButton onClick={onClickHandler}>
         <Add />
       </IconButton>
-      <IconButton onClick={onClickHandler}>
+      <IconButton>
         <Favorite />
       </IconButton>
     </li>

@@ -1,5 +1,6 @@
 const dummyData1 = [
   {
+    id: 100000,
     name: "Fly Me to the Moon",
     singer: "The Macarons Project",
     cover:
@@ -11,6 +12,7 @@ const dummyData1 = [
     },
   },
   {
+    id: 100001,
     name: "C'est Si Bon",
     singer: "Lisa Ono",
     cover:
@@ -19,6 +21,7 @@ const dummyData1 = [
       "https://cdns-preview-7.dzcdn.net/stream/c-7d7bd0dcb0c3dcc790c46aea855aba38-5.mp3",
   },
   {
+    id: 1000002,
     name: "Who Can I Turn To?",
     singer: "Katharine McPhee",
     cover:
@@ -30,6 +33,7 @@ const dummyData1 = [
 
 const dummyData2 = [
   {
+    id: 10000003,
     name: `Solar Sect of Mystic Wisdom ~ Nuclear Fusion (From "Touhou 11")`,
     singer: "FalKKonE",
     cover:
@@ -38,6 +42,7 @@ const dummyData2 = [
       "https://cdns-preview-e.dzcdn.net/stream/c-e2b854a79f9936186f758d023d53783a-4.mp3",
   },
   {
+    id: 10000004,
     name: "Lucid Traveler（feat. NAGISA）",
     singer: "A-One",
     cover:
@@ -46,6 +51,7 @@ const dummyData2 = [
       "https://cdns-preview-1.dzcdn.net/stream/c-152e9c4d20ebb16df82bebfd820935f0-3.mp3",
   },
   {
+    id: 1000005,
     name: "Loreilei's Melody",
     singer: "Takahito Rute Koshida",
     cover:
@@ -57,6 +63,7 @@ const dummyData2 = [
 
 const dummyData3 = [
   {
+    id: 1000006,
     name: "Bedtime Stories",
     singer: "Jay Chou",
     cover:
@@ -65,6 +72,7 @@ const dummyData3 = [
       "http://res.cloudinary.com/alick/video/upload/v1502375674/Bedtime_Stories.mp3",
   },
   {
+    id: 10000007,
     name: "Dorost Nemisham",
     singer: "Sirvan Khosravi",
     cover:
@@ -76,6 +84,7 @@ const dummyData3 = [
     },
   },
   {
+    id: 10000008,
     name: "Despacito",
     singer: "Luis Fonsi",
     cover:

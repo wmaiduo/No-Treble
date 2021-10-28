@@ -17,6 +17,7 @@ const SearchPageCard = (props) => {
   const onAddHandler = () => {
     addSongsToCurrentPlaylist([
       {
+        id: props.id,
         name: props.title,
         singer: props.artist,
         cover: props.cover,
@@ -31,10 +32,6 @@ const SearchPageCard = (props) => {
     if (!favorites.includes(props.id))
       setFavorites((prev) => [...prev, props.id]);
   };
-
-  useEffect(() => {
-    console.log(favorites);
-  }, [favorites])
 
   return (
     <li>

@@ -5,7 +5,7 @@ import Cards from "./components/Cards";
 import songsdata from "../data/dummydata.json";
 import MusicPlayer from "./components/MusicPlayer";
 import Search from "./components/Search";
-import SearchPage from "./components/SearchPage"
+import SearchPage from "./components/SearchPage.jsx"
 
 export default class App extends Component {
   state = {

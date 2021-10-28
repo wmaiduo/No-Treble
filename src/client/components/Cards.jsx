@@ -3,12 +3,10 @@ import DeletIcon from '../public/images/delete_outline-24px.svg';
 import Screenshot from '../public/images/Screenshot.png';
 
 function Cards(props) {
-  console.log(props.data);
   const [favorite, setFavorite] = useState([]);
   const addToFavorite = id => {
     if (!favorite.includes(id)) setFavorite(fav=> [...fav,id]);      
   };
-  console.log(favorite);
 
   // const removeFavorite = id => {
   //   let index = favorite.indexOf(id);

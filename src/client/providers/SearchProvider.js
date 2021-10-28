@@ -15,5 +15,4 @@ export default function SearchProvider (props) {
             {props.children}
         </SearchContext.Provider>
     )
-
 }

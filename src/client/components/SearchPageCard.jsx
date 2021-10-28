@@ -2,19 +2,20 @@
 //props.title is a String for the song, props.artist is a String for the name of the singer
 //props.cover is the URL link in String for the image of the album, props.preview is the URL link in string for the mp3 file of the song
 import React, { useContext, useEffect } from "react";
+import { FavoritesContext } from "../providers/FavoritesProvider";
+import Favorite from "@mui/icons-material/Favorite"
 
 import Add from "@mui/icons-material/Add";
-import Favorite from "@mui/icons-material/Favorite";
 import { IconButton } from "@mui/material";
 
 import { CurrentPlaylistContext } from "../providers/currentPlaylistProvider";
-import { FavoriteContext } from "../providers/FavoriteProvider";
+import axios from "axios";
+
 
 const SearchPageCard = (props) => {
   const { addSongsToCurrentPlaylist } = useContext(CurrentPlaylistContext);
-  const { favorites, setFavorites } = useContext(FavoriteContext);
-
-  const onAddHandler = () => {
+  const {favorites, setFavorites} = useContext(FavoritesContext);
+  const onClickHandler = () => {
     addSongsToCurrentPlaylist([
       {
         id: props.id,
@@ -22,16 +23,26 @@ const SearchPageCard = (props) => {
         singer: props.artist,
         cover: props.cover,
         musicSrc: () => {
-          return Promise.resolve(props.preview);
+         return Promise.resolve(props.preview);
         },
       },
     ]);
   };
-
-  const onFavoriteHandler = () => {
-    if (!favorites.includes(props.id))
-      setFavorites((prev) => [...prev, props.id]);
-  };
+  
+  const onFavoriteHandler = () => {   
+    if (!favorites.includes(props.id)) setFavorites(prev=> [...prev,props.id]);
+  }
+  
+  useEffect(() =>{
+    axios
+    .post(`http://localhost:8080/favorites`,setFavorites)    
+    .then((response) => {
+      console.log(response);
+      // setFavorites
+    })
+  .catch((err)=> console.log(err));
+ 
+  },[favorites])
 
   return (
     <li>

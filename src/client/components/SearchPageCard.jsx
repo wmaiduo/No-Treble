@@ -4,6 +4,7 @@
 import React, { useContext } from "react";
 
 import Add from "@mui/icons-material/Add";
+import Favorite from "@mui/icons-material/Favorite";
 import { IconButton } from "@mui/material";
 
 import { CurrentPlaylistContext } from "../providers/currentPlaylistProvider";
@@ -29,6 +30,9 @@ const SearchPageCard = (props) => {
       <img src={props.cover} /> {props.title} - {props.artist}{" "}
       <IconButton onClick={onClickHandler}>
         <Add />
+      </IconButton>
+      <IconButton onClick={onClickHandler}>
+        <Favorite />
       </IconButton>
     </li>
   );

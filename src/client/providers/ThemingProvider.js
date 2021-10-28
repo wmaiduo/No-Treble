@@ -20,7 +20,7 @@ export default function SearchProvider(props) {
     name: "light",
     main: "#E7E5E5",
     primary: "#DE7C5A",
-    secondary: "#5A7D7C",
+    secondary: "#F15BB5",
     tertiary: "#110B11",
   };
 

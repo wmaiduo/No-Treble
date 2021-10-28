@@ -71,7 +71,7 @@ export default function CurrentPlaylistProvider(props) {
     setCurrentAudioLists([...playlist]);
   };
 
-  //accept a new playlist without
+  //accept a new playlist without interrupting the current song playing, the current playing song must be in the playlist
   const removeSongFromCurrentPlaylist = (playlist) => {
     setOptions({
       ...options,

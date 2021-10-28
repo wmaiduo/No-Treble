@@ -4,10 +4,12 @@
 import React, { useContext, useEffect } from "react";
 import { FavoritesContext } from "../providers/FavoritesProvider";
 import Favorite from "@mui/icons-material/Favorite"
+
 import Add from "@mui/icons-material/Add";
 import { IconButton } from "@mui/material";
 
 import { CurrentPlaylistContext } from "../providers/currentPlaylistProvider";
+import axios from "axios";
 
 
 const SearchPageCard = (props) => {
@@ -25,12 +27,22 @@ const SearchPageCard = (props) => {
       },
     ]);
   };
-  const onFavoriteHandler = ()=>{
-    if (!favorites.includes(props.id)) setFavorites(prev=> [...prev,props.id]);
-  }
+  const onFavoriteHandler = ()=>{   
+  if (!favorites.includes(props.id)) setFavorites(prev=> [...prev,props.id]);
+}
+  
   useEffect(() =>{
-    console.log(favorites)
+    axios
+    .post(`http://localhost:8080/favorites`,setFavorites)    
+    .then((response) => {
+      console.log(response);
+      // setFavorites
+    })
+  .catch((err)=> console.log(err));
+ 
   },[favorites])
+
+
 
   return (
     <li>

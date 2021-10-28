@@ -5,7 +5,7 @@ import { dummyData1 } from "../../dummy_database/dummyAudioListPaths";
 export const CurrentPlaylistContext = createContext();
 
 export default function CurrentPlaylistProvider(props) {
-    //initialize currentAudioList with dummyData1 
+  //initialize currentAudioList with dummyData1 
   const [currentAudioLists, setCurrentAudioLists] = useState(dummyData1);
   //set options for the Music Player in components/MusicPlayer
   const [options, setOptions] = useState({

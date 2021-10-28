@@ -20,7 +20,7 @@ export default class App extends Component {
         <div className="container">
           <Search />
           {/* <Cards data={this.state.songs} /> */}
-          {/* <Controller /> */}
+        
           <SearchPage />
         </div>
 

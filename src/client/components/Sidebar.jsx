@@ -10,7 +10,6 @@ import Favorite from "@mui/icons-material/Favorite";
 import Person from "@mui/icons-material/Person";
 import Album from "@mui/icons-material/Album";
 
-
 import { ThemingContext } from "../providers/ThemingProvider";
 
 const SidebarContainer = styled.div`
@@ -56,7 +55,6 @@ const Link = styled.a`
 const Span = styled.span`
   margin-left: 1em;
 `
-
 const ButtomDiv = styled.div`
   margin-top: auto;
   margin-bottom: 9vh;

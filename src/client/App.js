@@ -1,4 +1,5 @@
 import React, { Component, useContext } from "react";
+
 import "./app.css";
 import Sidebar from "./components/Sidebar";
 import Cards from "./components/Cards";
@@ -15,7 +16,7 @@ import styled, { createGlobalStyle, ThemeProvider } from "styled-components";
 
 const GlobalStyle = createGlobalStyle`
   body {
-    background-color: ${props => props.theme.background};
+    background-color: ${(props) => props.theme.background};
     margin: 0;
     padding: 0;
     border: 0;
@@ -34,9 +35,9 @@ const App = () => {
 
   let activePage;
   if (active === "search") {
-    activePage = <SearchPage />
+    activePage = <SearchPage />;
   } else if (active === "favorites") {
-    activePage = <FavoritesPage />
+    activePage = <FavoritesPage />;
   }
 
   return (
@@ -48,7 +49,7 @@ const App = () => {
           <div className="container">
             <Search />
             {/* <Cards data={state.songs} /> */}
-            { activePage }
+            {activePage}
           </div>
           <MusicPlayer />
         </div>

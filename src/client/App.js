@@ -15,7 +15,7 @@ import styled, { createGlobalStyle, ThemeProvider } from "styled-components";
 
 const GlobalStyle = createGlobalStyle`
   body {
-    background-color: ${props => props.theme.main};
+    background-color: ${props => props.theme.background};
     margin: 0;
     padding: 0;
     border: 0;

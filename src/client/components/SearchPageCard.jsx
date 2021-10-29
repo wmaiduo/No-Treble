@@ -17,12 +17,11 @@ const SearchPageCard = (props) => {
   const onClickHandler = () => {
     addSongsToCurrentPlaylist([
       {
+        id: props.id,
         name: props.title,
         singer: props.artist,
         cover: props.cover,
-        musicSrc: () => {
-          return Promise.resolve(props.preview);
-        },
+        musicSrc: props.preview,
       },
     ]);
   };

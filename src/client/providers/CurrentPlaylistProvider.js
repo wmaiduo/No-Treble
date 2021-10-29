@@ -37,6 +37,9 @@ export default function CurrentPlaylistProvider(props) {
   //     },
   //   ];
   const addSongsToCurrentPlaylist = (playlist) => {
+    console.log(playlist);
+    console.log(currentAudioLists);
+    console.log(currentAudioLists.some((audio) => audio.id === playlist[0].id));
     if (!currentAudioLists.some((audio) => audio.id === playlist[0].id)) {
       setOptions({
         ...options,

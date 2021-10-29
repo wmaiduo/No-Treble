@@ -14,14 +14,16 @@ export default function ThemingProvider(props) {
     primary: "#04aa6d",
     secondary: "#555",
     tertiary: "#F5FFFA",
+    background: "#112035"
   };
 
   const light = {
     name: "light",
     main: "#E7E5E5",
-    primary: "#DE7C5A",
-    secondary: "#F15BB5",
-    tertiary: "#110B11",
+    primary: "#FF7F11",
+    secondary: "#DE7C5A",
+    tertiary: "#006D77",
+    background: "#EDF6F9",
   };
 
   const [theme, setTheme] = useState(dark);

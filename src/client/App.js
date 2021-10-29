@@ -1,18 +1,22 @@
 import React, { Component, useContext } from "react";
+
 import "./app.css";
 import Sidebar from "./components/Sidebar";
 import Cards from "./components/Cards";
 import songsdata from "../data/dummydata.json";
 import MusicPlayer from "./components/MusicPlayer";
 import Search from "./components/Search";
-import SearchPage from "./components/SearchPage.jsx";
+import SearchPage from "./components/SearchPage";
+import FavoritesPage from "./components/FavoritesPage";
 
 import { ThemingContext } from "./providers/ThemingProvider";
+import { ActivesContext } from "./providers/ActiveProvider";
+
 import styled, { createGlobalStyle, ThemeProvider } from "styled-components";
 
 const GlobalStyle = createGlobalStyle`
   body {
-    background-color: ${props => props.theme.main};
+    background-color: ${(props) => props.theme.background};
     margin: 0;
     padding: 0;
     border: 0;
@@ -27,6 +31,15 @@ const App = () => {
     songs: songsdata,
   };
   const { theme } = useContext(ThemingContext);
+  const { active } = useContext(ActivesContext);
+
+  let activePage;
+  if (active === "search") {
+    activePage = <SearchPage />;
+  } else if (active === "favorites") {
+    activePage = <FavoritesPage />;
+  }
+
   return (
     <React.Fragment>
       <ThemeProvider theme={theme}>
@@ -36,7 +49,7 @@ const App = () => {
           <div className="container">
             <Search />
             {/* <Cards data={state.songs} /> */}
-            <SearchPage />
+            {activePage}
           </div>
           <MusicPlayer />
         </div>

@@ -11,6 +11,7 @@ import Person from "@mui/icons-material/Person";
 import Album from "@mui/icons-material/Album";
 
 import { ThemingContext } from "../providers/ThemingProvider";
+import { ActivesContext } from "../providers/ActiveProvider";
 
 const SidebarContainer = styled.div`
   display: flex;
@@ -70,9 +71,9 @@ const LightMode = styled(lightMode)`
 `;
 
 function Sidebar() {
-  const [active, setActive] = useState(null);
   const [hover, setHover] = useState(null);
   const { theme, switchTheme } = useContext(ThemingContext);
+  const { active, setActive } = useContext(ActivesContext);
 
   let mode;
   if (theme.name === "light") {

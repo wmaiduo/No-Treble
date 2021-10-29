@@ -68,7 +68,6 @@ app.post("/favourite", (req, res) => {
     }, 
     function (err, result) {
       if (err) throw err;
-      req.json(result);
       db.close();
     });
   });

@@ -44,7 +44,7 @@ const SearchPageCard = (props) => {
   return (
     <li>
       <img src={props.cover} /> {props.title} - {props.artist}{" "}
-      <IconButton onClick={onAddHandler}>
+      <IconButton onClick={onClickHandler}>
         <Add />
       </IconButton>
       <IconButton onClick={onFavoriteHandler}>

@@ -3,18 +3,18 @@ import ReactDOM from "react-dom";
 import App from "./App";
 import CurrentPlayListProvider from "./providers/currentPlaylistProvider";
 import SearchProvider from "./providers/SearchProvider";
-import FavoriteProvider from "./providers/FavoriteProvider";
+import FavoritesProvider from "./providers/FavoritesProvider";
 import ThemeProvider from "./providers/ThemingProvider";
 import "font-awesome/css/font-awesome.min.css";
 
 ReactDOM.render(
   <CurrentPlayListProvider>
     <ThemeProvider>
-      <FavoriteProvider>
+      <FavoritesProvider>
         <SearchProvider>
           <App />
         </SearchProvider>
-      </FavoriteProvider>
+      </FavoritesProvider>
     </ThemeProvider>
   </CurrentPlayListProvider>,
   document.getElementById("root")

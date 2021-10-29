@@ -38,9 +38,6 @@ app.all('*', function(req, res, next) {
   next();
 });
 
-
-
-
 app.listen(process.env.PORT || 8080, () =>
   console.log(`Listening on port ${process.env.PORT || 8080}!`)
 );
@@ -52,7 +49,7 @@ app.get("/favourites", (req, res) => {
     const dbo = db.db('music');
     dbo.collection('favourite').find({}).toArray(function(err, result) {
       if (err) throw err;
-      console.log(result);
+      res.send(result);
       db.close();
     });
   });

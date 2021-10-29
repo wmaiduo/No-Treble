@@ -11,12 +11,14 @@ import { IconButton } from "@mui/material";
 import { CurrentPlaylistContext } from "../providers/currentPlaylistProvider";
 import axios from "axios";
 
+
 const SearchPageCard = (props) => {
   const { addSongsToCurrentPlaylist } = useContext(CurrentPlaylistContext);
   const {favorites, setFavorites} = useContext(FavoritesContext);
   const onClickHandler = () => {
     addSongsToCurrentPlaylist([
       {
+        id: props.id,
         name: props.title,
         singer: props.artist,
         cover: props.cover,
@@ -26,31 +28,31 @@ const SearchPageCard = (props) => {
       },
     ]);
   };
+  
   const onFavoriteHandler = () => {   
     if (!favorites.includes(props.id)) setFavorites(prev=> [...prev,props.id]);
   }
   
-  // useEffect(() => {
-  //   axios
-  //     .post(`http://localhost:8080/favorites`,setFavorites)    
-  //     .then((response) => {
-  //       console.log(response);
-  //       // setFavorites
-  //     })
-  //     .catch((err)=> console.log(err));
+  useEffect(() =>{
+    axios
+    .post(`http://localhost:8080/favorites`,setFavorites)    
+    .then((response) => {
+      console.log(response);
+      // setFavorites
+    })
+  .catch((err)=> console.log(err));
  
-  // },[favorites])
+  },[favorites])
 
   return (
     <li>
       <img src={props.cover} /> {props.title} - {props.artist}{" "}
-      <IconButton onClick={onClickHandler}>
+      <IconButton onClick={onAddHandler}>
         <Add />
       </IconButton>
       <IconButton onClick={onFavoriteHandler}>
         <Favorite />
       </IconButton>
-
     </li>
   );
 };

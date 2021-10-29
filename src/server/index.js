@@ -49,7 +49,7 @@ app.get("/favourites", (req, res) => {
     const dbo = db.db('music');
     dbo.collection('favourite').find({}).toArray(function(err, result) {
       if (err) throw err;
-      res.send(result);
+      res.send(result)
       db.close();
     });
   });
@@ -61,10 +61,10 @@ app.post("/favourite", (req, res) => {
     if (err) throw err;
     const dbo = db.db('music');
     dbo.collection('favourite').insertOne({
-      name: req.body.name,
-      singer: req.body.singer,
-      cover: req.body.cover,
-      musicSrc: req.body.musicSrc
+      name: req.params.name,
+      singer: req.params.singer,
+      cover: req.params.cover,
+      musicSrc: req.params.musicSrc
     }, 
     function (err, result) {
       if (err) throw err;

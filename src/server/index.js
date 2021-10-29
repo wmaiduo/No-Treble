@@ -61,10 +61,10 @@ app.post("/favourite", (req, res) => {
     if (err) throw err;
     const dbo = db.db('music');
     dbo.collection('favourite').insertOne({
-      name: req.params.name,
-      singer: req.params.singer,
-      cover: req.params.cover,
-      musicSrc: req.params.musicSrc
+      name: req.body.name,
+      singer: req.body.singer,
+      cover: req.body.cover,
+      musicSrc: req.body.musicSrc
     }, 
     function (err, result) {
       if (err) throw err;

@@ -31,6 +31,7 @@ const FavoritesPage = () => {
         cover={datum.cover}
         title={datum.name}
         artist={datum.singer}
+        preview={datum.musicSrc}
       />
     ));
   }

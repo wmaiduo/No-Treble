@@ -7,13 +7,16 @@ import Cancel from "@mui/icons-material/Cancel"
 import { IconButton } from "@mui/material"
 
 import { SearchContext } from "../providers/SearchProvider";
+import { ActivesContext } from "../providers/ActiveProvider";
 
 const Search = () => {
   const [search, setSearch] = useState({ value: "" });
   const {musicData, setMusicData} = useContext(SearchContext);
+  const { setActive } = useContext(ActivesContext);
 
   const onChangeHandler = (e) => {
     setSearch({ value: e.target.value });
+    setActive("search");
   };
 
   const onClickHandler = (e) => {
@@ -34,7 +37,7 @@ const Search = () => {
         setMusicData(res.data.data);
         }
       });
-    }, 750);
+    }, 500);
     return () => clearTimeout(timeOutID);
   }, [search]);
 

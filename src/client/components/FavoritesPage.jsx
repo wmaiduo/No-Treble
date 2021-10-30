@@ -7,6 +7,7 @@ import FavoritesPageCard from "./FavoritesPageCard";
 import Loading from "./Loading";
 
 import { ActivesContext } from "../providers/ActiveProvider";
+import { CurrentPlaylistContext } from "../providers/currentPlaylistProvider";
 
 import {
   TableContainer,
@@ -53,6 +54,7 @@ const StyledButton = styled.button`
 
 const FavoritesPage = () => {
   const { active } = useContext(ActivesContext);
+  const { replaceCurrentPlaylist } = useContext(CurrentPlaylistContext);
   const [axiosState, setAxiosState] = useState({
     state: "Loading",
     data: [],
@@ -84,11 +86,16 @@ const FavoritesPage = () => {
     ));
   }
 
+  const onPlayHandler = () => {
+    setButtonState("playing");
+    replaceCurrentPlaylist(axiosState.data);
+  }
+
   return (
     <React.Fragment>
       {axiosState.state === "Acquired" ? (
         <StyledButton
-          onClick={() => setButtonState("playing")}
+          onClick={onPlayHandler}
           onMouseEnter={() => {
             if (buttonState !== "playing") {
               setButtonState("play");

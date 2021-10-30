@@ -71,6 +71,7 @@ export default function CurrentPlaylistProvider(props) {
       audioLists: [...playlist],
       clearPriorAudioLists: true,
       autoPlay: true,
+      playIndex: 0,
     });
     setCurrentAudioLists([...playlist]);
   };

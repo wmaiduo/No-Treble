@@ -20,6 +20,7 @@ import {
 
 import PlayCircleOutline from "@mui/icons-material/PlayCircleOutline";
 import BarChart from "@mui/icons-material/BarChart";
+import Replay from "@mui/icons-material/Replay"
 
 const StyledTableContainer = styled(TableContainer)`
   max-height: 70vh;
@@ -43,8 +44,8 @@ const StyledButton = styled.button`
   margin-bottom: 2vh;
   height: 4vh;
   width: 13vw;
-  max-width: 150px;
-  min-width: 80px;
+  max-width: 200px;
+  min-width: 100px;
   border-radius: 1em;
   border: 0;
   color: ${(props) => props.theme.tertiary};
@@ -99,11 +100,16 @@ const FavoritesPage = () => {
           onMouseEnter={() => {
             if (buttonState !== "playing") {
               setButtonState("play");
+            } else {
+              setButtonState("replay");
             }
           }}
           onMouseLeave={() => {
-            if (buttonState !== "playing") {
+            if (buttonState === "play") {
               setButtonState("listen");
+            };
+            if (buttonState === "replay") {
+              setButtonState("playing")
             }
           }}
         >
@@ -121,6 +127,11 @@ const FavoritesPage = () => {
             <React.Fragment>
               PLAY ALL
               <PlayCircleOutline />
+            </React.Fragment>
+          ) : buttonState === "replay" ? (
+            <React.Fragment>
+              REPLAY
+              <Replay />
             </React.Fragment>
           ) : null}
         </StyledButton>

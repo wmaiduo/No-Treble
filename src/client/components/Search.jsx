@@ -1,9 +1,7 @@
 //This component sends request to API to extract data,
 //the data is then saved with SearchProvider.js
 import React, { useState, useEffect, useContext } from "react";
-import axios from "axios";
 import styled from "styled-components";
-import { Helmet } from "react-helmet";
 
 import cancel from "@mui/icons-material/Cancel";
 import { IconButton, InputAdornment, OutlinedInput } from "@mui/material";
@@ -17,6 +15,7 @@ const StyledSearchDiv = styled.div`
   align-items: center;
   background-color: ${(props) => props.theme.backgroud};
   width: 100%;
+  height: 20vh;
   padding: 5vh;
 `;
 
@@ -41,31 +40,15 @@ const Search = () => {
 
   useEffect(() => {
     const timeOutID = setTimeout(() => {
-      Promise.resolve(
-        //https://cors-anywhere.herokuapp.com/ is added to avoid CORS error
-        axios.get(`https://cors-anywhere.herokuapp.com/https://api.deezer.com/search?q=${search.value}`)
-      ).then((res) => {
-        if (res.data.error) {
-          setMusicData([]);
-        } else {
-          setMusicData(res.data.data);
-        }
+      DZ.api(`/search?q=${search.value}`, function(res){
+        setMusicData(res.data);
       });
-    }, 500);
+    }, 100);
     return () => clearTimeout(timeOutID);
   }, [search]);
 
-  const myHTML = `
-  <script src="https://e-cdns-files.dzcdn.net/js/min/dz.js"></script>
-  <script>
-    DZ.api('/user/5', function(response){
-      console.log("Name of user id 5", response.name);
-    });
-  </script>`;
-
   return (
     <React.Fragment>
-      <Helmet><div dangerouslySetInnerHTML={{ __html: myHTML }} /></Helmet>
       <StyledSearchDiv>
         <OutlinedInput
           sx={{

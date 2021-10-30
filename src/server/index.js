@@ -9,6 +9,28 @@ const { MongoClient } = require("mongodb");
 const mongo = require("mongodb");
 const uri = `mongodb+srv://default:${process.env.mongoDB}@no-treble.sqmlw.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`;
 
+// test database connection and list all collections (databases)
+async function listDatabases(client) {
+  databasesList = await client.db().admin().listDatabases();
+  console.log("Databases: ");
+  databasesList.databases.forEach(db => console.log(` - ${db.name}`));
+}
+async function main() {
+  const client = new MongoClient(uri);
+  try {
+    await client.connect();
+    await listDatabases(client);
+  }
+  catch (err) {
+    console.error(err);
+  }
+  finally {
+    await client.close();
+  }
+}
+
+main().catch(console.error);
+
 app.all('*', function(req, res, next) {
   res.header('Access-Control-Allow-Origin', '*');
   res.header('Access-Control-Allow-Credentials', 'true');

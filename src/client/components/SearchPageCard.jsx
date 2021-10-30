@@ -4,10 +4,9 @@
 import React, { useContext, useState } from "react";
 import styled from "styled-components";
 
-import { FavoritesContext } from "../providers/FavoritesProvider";
 import Favorite from "@mui/icons-material/Favorite";
-
 import Add from "@mui/icons-material/Add";
+import PlayCircle from "@mui/icons-material/PlayCircle";
 import { Avatar, IconButton } from "@mui/material";
 import { TableRow, TableCell } from "@mui/material";
 
@@ -29,12 +28,27 @@ const StyledAdd = styled(Add)`
   color: ${(props) => props.theme.primary};
 `;
 const StyledFavorite = styled(Favorite)`
-  color: ${(props) => props.favorited.state ? props.theme.favorite : props.theme.primary};
+  color: ${(props) =>
+    props.favorited.state ? props.theme.favorite : props.theme.primary};
 `;
 
 const SearchPageCard = (props) => {
-  const { addSongsToCurrentPlaylist } = useContext(CurrentPlaylistContext);
-  const [favorited, setFavorited] = useState({state: false});
+  const { addSongsToCurrentPlaylist, replaceCurrentPlaylist } = useContext(
+    CurrentPlaylistContext
+  );
+  const [favorited, setFavorited] = useState({ state: false });
+  const [hover, setHover] = useState(null);
+  const onPlayHandler = () => {
+    replaceCurrentPlaylist([
+      {
+        id: props.id,
+        name: props.title,
+        singer: props.artist,
+        cover: props.cover,
+        musicSrc: props.preview,
+      },
+    ]);
+  };
   const onAddHandler = () => {
     addSongsToCurrentPlaylist([
       {
@@ -59,17 +73,31 @@ const SearchPageCard = (props) => {
         },
       })
     );
-    setFavorited({state: true});
+    setFavorited({ state: true });
   };
 
   return (
     <StyledTableRow key={props.id}>
       <TableCell align="left">
-        <Avatar
-          sx={{ width: 50, height: 50 }}
-          src={props.cover}
-          alt={props.title}
-        />
+        {hover === "Avatar" ? (
+          <Avatar
+            sx={{ width: 50, height: 50 }}
+            onMouseEnter={() => setHover("Avatar")}
+            onMouseLeave={() => setHover(null)}
+          >
+            <IconButton onClick={onPlayHandler}>
+              <PlayCircle sx={{ width: 50, height: 50 }}/>
+            </IconButton>
+          </Avatar>
+        ) : (
+          <Avatar
+            sx={{ width: 50, height: 50 }}
+            src={props.cover}
+            alt={props.title}
+            onMouseEnter={() => setHover("Avatar")}
+            onMouseLeave={() => setHover(null)}
+          />
+        )}
       </TableCell>
       <TableCell align="center">
         <StyledFontDiv>{props.title}</StyledFontDiv>
@@ -87,7 +115,7 @@ const SearchPageCard = (props) => {
       </TableCell>
       <TableCell align="right">
         <IconButton onClick={onFavoriteHandler}>
-          <StyledFavorite favorited={favorited}/>
+          <StyledFavorite favorited={favorited} />
         </IconButton>
       </TableCell>
     </StyledTableRow>

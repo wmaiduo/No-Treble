@@ -14,7 +14,8 @@ export default function ThemingProvider(props) {
     primary: "#04aa6d",
     secondary: "#555",
     tertiary: "#F5FFFA",
-    background: "#112035"
+    background: "#112035",
+    favorite: "#EE4B2B",
   };
 
   const light = {
@@ -24,6 +25,7 @@ export default function ThemingProvider(props) {
     secondary: "#DE7C5A",
     tertiary: "#006D77",
     background: "#EDF6F9",
+    favorite: "#DA70D6",
   };
 
   const [theme, setTheme] = useState(dark);

@@ -10,7 +10,9 @@ import { TableContainer, Table, TableBody } from "@mui/material";
 
 const StyledTableContainer = styled(TableContainer)`
   max-height: 72vh;
-  margin-bottom: 8vh;
+  max-width: 70vw;
+  margin-left: auto;
+  margin-right: auto;
 `;
 
 const SearchPage = () => {

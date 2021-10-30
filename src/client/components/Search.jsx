@@ -15,7 +15,7 @@ const StyledSearchDiv = styled.div`
   align-items: center;
   background-color: ${(props) => props.theme.backgroud};
   width: 100%;
-  height: 20vh;
+  height: 15;
   padding: 5vh;
 `;
 

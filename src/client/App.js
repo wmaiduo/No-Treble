@@ -1,11 +1,9 @@
-import React, { Component, useContext, useEffect } from "react";
+import React, { useContext } from "react";
 
 import styled, { createGlobalStyle, ThemeProvider } from "styled-components";
 
 import "./app.css";
 import Sidebar from "./components/Sidebar";
-import Cards from "./components/Cards";
-import songsdata from "../data/dummydata.json";
 import MusicPlayer from "./components/MusicPlayer";
 import Search from "./components/Search";
 import SearchPage from "./components/SearchPage";
@@ -29,9 +27,6 @@ const GlobalStyle = createGlobalStyle`
 `;
 
 const App = () => {
-  const state = {
-    songs: songsdata,
-  };
   const { theme } = useContext(ThemingContext);
   const { active } = useContext(ActivesContext);
 
@@ -53,16 +48,12 @@ const App = () => {
           <Sidebar />
           <div className="container">
             <Search />
-            {/* <Cards data={state.songs} /> */}
             {activePage}
           </div>
           <MusicPlayer />
         </div>
       </ThemeProvider>     
     </React.Fragment>
-
-    // uncomment the line below and comment things above until return to see how MusicPlayerContextUsageExample work
-    // <MusicPlayerContextUsageExample />
   );
 };
 

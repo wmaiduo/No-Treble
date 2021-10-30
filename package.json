@@ -29,6 +29,7 @@
     "react-dom": "^16.5.2",
     "react-helmet": "^6.1.0",
     "react-jinke-music-player": "^4.24.2",
+    "react-loading": "^2.0.3",
     "styled-components": "^5.3.3"
   },
   "devDependencies": {

@@ -10,6 +10,7 @@ import MusicPlayer from "./components/MusicPlayer";
 import Search from "./components/Search";
 import SearchPage from "./components/SearchPage";
 import FavoritesPage from "./components/FavoritesPage";
+import Loading from "./components/Loading";
 
 import { ThemingContext } from "./providers/ThemingProvider";
 import { ActivesContext } from "./providers/ActiveProvider";
@@ -55,6 +56,7 @@ const App = () => {
         </div>
       </ThemeProvider>
     </React.Fragment>
+
     // uncomment the line below and comment things above until return to see how MusicPlayerContextUsageExample work
     // <MusicPlayerContextUsageExample />
   );

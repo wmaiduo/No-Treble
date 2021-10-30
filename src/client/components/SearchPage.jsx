@@ -5,6 +5,7 @@ import styled from "styled-components";
 import { SearchContext } from "../providers/SearchProvider";
 
 import SearchPageCard from "./SearchPageCard";
+import Loading from "./Loading";
 
 import {
   TableContainer,
@@ -70,7 +71,9 @@ const SearchPage = () => {
             <TableBody>{SearchPageCards}</TableBody>
           </Table>
         </StyledTableContainer>
-      ) : null}
+      ) : (
+        <Loading type={"spokes"}/>
+      )}
     </React.Fragment>
   );
 };

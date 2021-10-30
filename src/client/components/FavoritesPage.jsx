@@ -4,6 +4,7 @@ import axios from "axios";
 import styled from "styled-components";
 
 import FavoritesPageCard from "./FavoritesPageCard";
+import Loading from "./Loading";
 
 import { ActivesContext } from "../providers/ActiveProvider";
 
@@ -139,7 +140,7 @@ const FavoritesPage = () => {
           </Table>
         </StyledTableContainer>
       ) : (
-        <p>Loading...</p>
+          <Loading type={"spokes"}/>
       )}
     </React.Fragment>
   );

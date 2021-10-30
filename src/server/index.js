@@ -9,28 +9,6 @@ const { MongoClient } = require("mongodb");
 const mongo = require("mongodb");
 const uri = `mongodb+srv://default:${process.env.mongoDB}@no-treble.sqmlw.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`;
 
-// test mongoDB connection, list all databases
-async function listDatabases(client) {
-  databasesList = await client.db().admin().listDatabases();
-  console.log("Databases: ");
-  databasesList.databases.forEach(db => console.log(` - ${db.name}`));
-}
-async function main() {
-  const client = new MongoClient(uri);
-  try {
-    await client.connect();
-    await listDatabases(client);
-  }
-  catch (err) {
-    console.error(err);
-  }
-  finally {
-    await client.close();
-  }
-}
-
-main().catch(console.error);
-
 app.all('*', function(req, res, next) {
   res.header('Access-Control-Allow-Origin', '*');
   res.header('Access-Control-Allow-Credentials', 'true');
@@ -43,15 +21,16 @@ app.all('*', function(req, res, next) {
 });
 
 app.listen(process.env.PORT || 8080, () =>
-  console.log(`Listening on port ${process.env.PORT || 8080}!`)
+  console.log(`Server listening on port ${process.env.PORT || 8080}!`)
 );
 
 // retrieve favourite songs from database
 app.get("/favourites", (req, res) => {
   MongoClient.connect(uri, (err, db) => {
+    const collection = db.db('music').collection('favourite')
     if (err) throw err;
     const dbo = db.db('music');
-    dbo.collection('favourite').find({}).toArray(function(err, result) {
+    collection.find({}).toArray(function(err, result) {
       if (err) throw err;
       res.send(result)
       db.close();
@@ -62,9 +41,9 @@ app.get("/favourites", (req, res) => {
 // add new data to favourite song database
 app.post("/favourite", (req, res) => {
   MongoClient.connect(uri, (err, db) => {
+    const collection = db.db('music').collection('favourite')
     if (err) throw err;
-    const dbo = db.db('music');
-    dbo.collection('favourite').insertOne({
+    collection.insertOne({
       name: req.body.name,
       singer: req.body.singer,
       cover: req.body.cover,
@@ -80,13 +59,12 @@ app.post("/favourite", (req, res) => {
 // add delete route from favourite song db
 app.post("/delete/:id", (req, res) => {
   MongoClient.connect(uri, (err, db) => {
+    const collection = db.db('music').collection('favourite')
     if (err) throw err;
-    const dbo = db.db('music');
     const query = { _id: new mongo.ObjectId(req.params.id) };
-    dbo.collection('favourite').deleteOne(query,
+    collection.deleteOne(query,
       function(err, result) {
         if (err) throw err;
-        console.log(result)
         db.close();
       });
   });
@@ -99,21 +77,18 @@ app.get("/reset", (req, res) => {
     if (err) throw err;
     seedData = data;
   });
-  
   MongoClient.connect(uri, (err, db) => {
+    const collection = db.db('music').collection('favourite')
     if (err) throw err;
-    const dbo = db.db('music');
-    dbo.collection('favourite').deleteMany(function(err, result) {
+    collection.deleteMany(function(err, result) {
       if (err) throw err;
     });
-    dbo.collection('favourite').insertMany(JSON.parse(seedData),
+    collection.insertMany(JSON.parse(seedData),
       function(err, result) {
         if (err) throw err;
-        console.log(result);
         db.close();
       });
-    });
+  });
 
   res.redirect('/favourites');
 });
-

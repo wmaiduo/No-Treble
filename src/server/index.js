@@ -1,9 +1,12 @@
 require('dotenv').config();
+const fs = require('fs');
 const express = require("express");
-const { MongoClient } = require("mongodb");
-const mongo = require("mongodb");
+
 const app = express();
 app.use(express.json());
+
+const { MongoClient } = require("mongodb");
+const mongo = require("mongodb");
 const uri = `mongodb+srv://default:${process.env.mongoDB}@no-treble.sqmlw.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`;
 
 // test mongoDB connection, list all databases
@@ -88,3 +91,29 @@ app.post("/delete/:id", (req, res) => {
       });
   });
 });
+
+// reseed data from mongoDB/dummyData.json
+app.get("/reset", (req, res) => {
+  let seedData;
+  fs.readFile('./src/mongoDB/dummyData.json', 'utf8', (err, data) => {
+    if (err) throw err;
+    seedData = data;
+  });
+  
+  MongoClient.connect(uri, (err, db) => {
+    if (err) throw err;
+    const dbo = db.db('music');
+    dbo.collection('favourite').deleteMany(function(err, result) {
+      if (err) throw err;
+    });
+    dbo.collection('favourite').insertMany(JSON.parse(seedData),
+      function(err, result) {
+        if (err) throw err;
+        console.log(result);
+        db.close();
+      });
+    });
+
+  res.redirect('/favourites');
+});
+

@@ -1,6 +1,7 @@
 require('dotenv').config();
 const express = require("express");
 const { MongoClient } = require("mongodb");
+const mongo = require("mongodb");
 const app = express();
 app.use(express.json());
 const uri = `mongodb+srv://default:${process.env.mongoDB}@no-treble.sqmlw.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`;
@@ -70,5 +71,20 @@ app.post("/favourite", (req, res) => {
       if (err) throw err;
       db.close();
     });
+  });
+});
+
+// add delete route from favourite song db
+app.post("/delete/:id", (req, res) => {
+  MongoClient.connect(uri, (err, db) => {
+    if (err) throw err;
+    const dbo = db.db('music');
+    const query = { _id: new mongo.ObjectId(req.params.id) };
+    dbo.collection('favourite').deleteOne(query,
+      function(err, result) {
+        if (err) throw err;
+        console.log(result)
+        db.close();
+      });
   });
 });

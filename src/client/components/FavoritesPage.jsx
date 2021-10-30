@@ -29,6 +29,7 @@ const FavoritesPage = () => {
     FavoritesPageCards = axiosState.data.map((datum) => (
       <FavoritesPageCard
         key={datum._id}
+        id={datum._id}
         cover={datum.cover}
         title={datum.name}
         artist={datum.singer}

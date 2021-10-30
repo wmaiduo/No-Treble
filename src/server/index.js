@@ -112,5 +112,7 @@ app.get("/reset", (req, res) => {
       });
   });
 
-  res.redirect('/favourites');
+  setTimeout(function(){
+    res.redirect('/favourites');
+  }, 1000);
 });

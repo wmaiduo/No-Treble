@@ -3,6 +3,7 @@
 //props.cover is the URL link in String for the image of the album, props.preview is the URL link in string for the mp3 file of the song
 import React, { useContext, useState } from "react";
 import styled from "styled-components";
+import axios from "axios";
 
 import Favorite from "@mui/icons-material/Favorite";
 import Add from "@mui/icons-material/Add";
@@ -11,10 +12,9 @@ import { Avatar, IconButton } from "@mui/material";
 import { TableRow, TableCell } from "@mui/material";
 
 import { CurrentPlaylistContext } from "../providers/currentPlaylistProvider";
-import axios from "axios";
 
 const StyledTableRow = styled(TableRow)`
-  height: 7vh;
+  height: 5vh;
   background-color: ${(props) => props.theme.background};
 `;
 

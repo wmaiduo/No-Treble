@@ -14,6 +14,7 @@ import Loading from "./components/Loading";
 
 import { ThemingContext } from "./providers/ThemingProvider";
 import { ActivesContext } from "./providers/ActiveProvider";
+import Artists from './components/Artists'
 
 const GlobalStyle = createGlobalStyle`
   body {
@@ -40,6 +41,9 @@ const App = () => {
   } else if (active === "favorites") {
     activePage = <FavoritesPage />;
   }
+ else if (active === "artists") {
+  activePage = <Artists/>;
+}
 
   return (
     <React.Fragment>
@@ -54,7 +58,7 @@ const App = () => {
           </div>
           <MusicPlayer />
         </div>
-      </ThemeProvider>
+      </ThemeProvider>     
     </React.Fragment>
 
     // uncomment the line below and comment things above until return to see how MusicPlayerContextUsageExample work

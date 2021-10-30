@@ -70,6 +70,7 @@ export default function CurrentPlaylistProvider(props) {
       ...options,
       audioLists: [...playlist],
       clearPriorAudioLists: true,
+      autoPlay: true,
     });
     setCurrentAudioLists([...playlist]);
   };

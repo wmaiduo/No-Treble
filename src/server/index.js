@@ -79,11 +79,11 @@ app.post("/favourite", (req, res) => {
 });
 
 // add delete route from favourite song db
-app.post("/delete/:id", (req, res) => {
+app.post("/delete", (req, res) => {
   MongoClient.connect(uri, (err, db) => {
     const collection = db.db('music').collection('favourite')
     if (err) throw err;
-    const query = { _id: new mongo.ObjectId(req.params.id) };
+    const query = { _id: new mongo.ObjectId(req.body.id) };
     collection.deleteOne(query,
       function(err, result) {
         if (err) throw err;

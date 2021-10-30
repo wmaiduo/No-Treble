@@ -11,6 +11,7 @@ import FavoritesPage from "./components/FavoritesPage";
 
 import { ThemingContext } from "./providers/ThemingProvider";
 import { ActivesContext } from "./providers/ActiveProvider";
+import Artists from './components/Artists'
 
 import styled, { createGlobalStyle, ThemeProvider } from "styled-components";
 
@@ -39,6 +40,9 @@ const App = () => {
   } else if (active === "favorites") {
     activePage = <FavoritesPage />;
   }
+ else if (active === "artists") {
+  activePage = <Artists/>;
+}
 
   return (
     <React.Fragment>
@@ -53,7 +57,7 @@ const App = () => {
           </div>
           <MusicPlayer />
         </div>
-      </ThemeProvider>
+      </ThemeProvider>     
     </React.Fragment>
     // uncomment the line below and comment things above until return to see how MusicPlayerContextUsageExample work
     // <MusicPlayerContextUsageExample />

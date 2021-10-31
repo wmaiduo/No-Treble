@@ -1,40 +1,23 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
+import { SearchContext } from "../providers/SearchProvider";
 
-   const Artists = () => {
-  
-     const [artists,setArtists] = useState([]);
-     const [query,setQuery]=useState("");
+const Artists = () => {
+  const { artistData } = useContext(SearchContext);
 
-     const onChangeHandler = (e) => {
-      setQuery({ value: e.target.value });
-     
-    };
-
-     useEffect(()=>{  
-      
-      DZ.api(`/search/artist?q=${query.value}`, function(res){
-        console.log(res.data);
-        setArtists(res.data);
-      });
-    }, [query]);
-
-    const artistlist = artists.map((artist)=>(
-      <div key={artist.id}>
-        {artist.name}
-        <img src={artist.picture}/>
-        {artist.nb_fan}
-        {artist.nb_album}                
-      </div>     
-  )) 
+  const artistlist = artistData.map((artist) => (
+    <div key={artist.id}>
+      {artist.name}
+      <img src={artist.picture} />
+      {artist.nb_fan}
+      {artist.nb_album}
+    </div>
+  ));
 
   return (
     <li>
-      <input type= "text" placeholder="Search for Atists" onChange= {onChangeHandler}></input>
       {artistlist}
-     
     </li>
   );
-}
- 
+};
 
 export default Artists;

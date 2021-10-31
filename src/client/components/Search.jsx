@@ -26,12 +26,10 @@ const Cancel = styled(cancel)`
 
 const Search = () => {
   const [search, setSearch] = useState({ value: "" });
-  const { setMusicData } = useContext(SearchContext);
-  const { setActive } = useContext(ActivesContext);
+  const { setMusicData, setArtistData } = useContext(SearchContext);
 
   const onChangeHandler = (e) => {
     setSearch({ value: e.target.value });
-    setActive("search");
   };
 
   const onClickHandler = (e) => {
@@ -45,6 +43,16 @@ const Search = () => {
       });
     }, 100);
     return () => clearTimeout(timeOutID);
+  }, [search]);
+
+  useEffect(() => {
+    DZ.api(`/search/artist?q=${search.value}`, function (res) {
+      if (res.data) {
+        setArtistData(res.data);
+      } else if (!res.data) {
+        setArtistData([]);
+      }
+    });
   }, [search]);
 
   return (

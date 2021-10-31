@@ -31,7 +31,7 @@ const App = () => {
   const { active } = useContext(ActivesContext);
 
   let activePage;
-  if (active === "search") {
+  if (active === "home") {
     activePage = <SearchPage />;
   } else if (active === "favorites") {
     activePage = <FavoritesPage />;

@@ -22,10 +22,12 @@ const StyledFontDiv = styled.div`
 `;
 
 const ArtistsPageCard = (props) => {
-  const { theme } = useContext(ThemingContext);
-
   return (
-    <StyledDiv>
+    <StyledDiv
+      onClick={() =>
+        props.setPageState({ state: "songs", selectedArtistID: props.id })
+      }
+    >
       <Avatar src={props.image} sx={{ width: 150, height: 150 }} />
       <StyledFontDiv>{props.name}</StyledFontDiv>
     </StyledDiv>

@@ -7,6 +7,7 @@ import { SearchContext } from "../providers/SearchProvider";
 import { ThemingContext } from "../providers/ThemingProvider";
 
 import ArtistsPageCard from "./ArtistsPageCard";
+import ArtistsSongsPage from "./ArtistsSongsPage";
 
 import Loading from "./Loading";
 
@@ -22,6 +23,10 @@ const StyledContainer = styled.div`
 
 const ArtistsPage = () => {
   const { artistData } = useContext(SearchContext);
+  const [pageState, setPageState] = useState({
+    state: "artists",
+    selectedArtistID: null,
+  });
 
   const artistlist = artistData.map((artistDatum) => (
     <ArtistsPageCard
@@ -29,13 +34,18 @@ const ArtistsPage = () => {
       id={artistDatum.id}
       name={artistDatum.name}
       image={artistDatum.picture_medium}
+      setPageState={setPageState}
     />
   ));
 
   return (
     <React.Fragment>
       {artistData ? (
-        <StyledContainer>{artistlist}</StyledContainer>
+        pageState.state === "artists" ? (
+          <StyledContainer>{artistlist}</StyledContainer>
+        ) : pageState.state === "songs" ? (
+          <ArtistsSongsPage id={pageState.selectedArtistID} setPageState={setPageState}/>
+        ) : null
       ) : (
         <Loading />
       )}

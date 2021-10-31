@@ -36,9 +36,9 @@ const App = () => {
   } else if (active === "favorites") {
     activePage = <FavoritesPage />;
   }
- else if (active === "artists") {
-  activePage = <Artists/>;
-}
+  else if (active === "artists") {
+    activePage = <Artists/>;
+  }
 
   return (
     <React.Fragment>

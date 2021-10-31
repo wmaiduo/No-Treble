@@ -27,6 +27,7 @@ const Cancel = styled(cancel)`
 const Search = () => {
   const [search, setSearch] = useState({ value: "" });
   const { setMusicData, setArtistData } = useContext(SearchContext);
+  const { active } = useContext(ActivesContext)
 
   const onChangeHandler = (e) => {
     setSearch({ value: e.target.value });
@@ -41,11 +42,12 @@ const Search = () => {
       DZ.api(`/search?q=${search.value}`, function(res){
         setMusicData(res.data);
       });
-    }, 100);
+    }, 250);
     return () => clearTimeout(timeOutID);
   }, [search]);
 
   useEffect(() => {
+    const timeOutID = setTimeout(() => {
     DZ.api(`/search/artist?q=${search.value}`, function (res) {
       if (res.data) {
         setArtistData(res.data);
@@ -53,7 +55,16 @@ const Search = () => {
         setArtistData([]);
       }
     });
+  }, 250);
+  return () => clearTimeout(timeOutID);
   }, [search]);
+
+  let placeHolder = "";
+  if (active === "home") {
+    placeHolder = "Find Your Favorite Song"
+  } else if (active === "artists") {
+    placeHolder = "Find Your Favorite Artist"
+  }
 
   return (
     <React.Fragment>
@@ -67,7 +78,7 @@ const Search = () => {
             background: "white",
             backgroundSize: "3rem 3rem",
           }}
-          placeholder="Find Your Favorite Song"
+          placeholder={placeHolder}
           value={search.value}
           onChange={onChangeHandler}
           endAdornment={

@@ -4,6 +4,7 @@ import styled from "styled-components";
 
 import { SearchContext } from "../providers/SearchProvider";
 
+import HomePage from "./HomePage";
 import SearchPageCard from "./SearchPageCard";
 import Loading from "./Loading";
 
@@ -72,7 +73,7 @@ const SearchPage = () => {
           </Table>
         </StyledTableContainer>
       ) : (
-        <Loading type={"spokes"}/>
+        <HomePage />
       )}
     </React.Fragment>
   );

@@ -1,7 +1,8 @@
 require('dotenv').config();
-const { app, BrowserWindow } = require('electron');
+const { app, BrowserWindow, ipcMain } = require('electron');
 const path = require('path');
 const server = require('./server.js');
+const ipc = ipcMain;
 
 // Handle creating/removing shortcuts on Windows when installing/uninstalling.
 if (require('electron-squirrel-startup')) { // eslint-disable-line global-require
@@ -13,10 +14,17 @@ const createWindow = () => {
   const mainWindow = new BrowserWindow({
     width: 1055,
     height: 650,
+    minWidth: 1055,
+    minHeight: 650,
     webPreferences: {
       nodeIntegration: true
     },
-    icon: 'icons/icon.png'
+    icon: 'icons/icon.png',
+    titleBarStyle: 'hidden',
+    titleBarOverlay: {
+      color: "#0000",
+      symbolColor: "#FFF"
+    }
   });
 
   // and load the index.html of the app.
@@ -27,9 +35,6 @@ const createWindow = () => {
   
   // Hide menu options.
   mainWindow.removeMenu();
-
-  // Set minimum size
-  mainWindow.setMinimumSize(1055, 650);
 };
 
 // This method will be called when Electron has finished

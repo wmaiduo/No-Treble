@@ -17,7 +17,7 @@ import {
 } from "@mui/material";
 
 const StyledTableContainer = styled(TableContainer)`
-  max-height: 72vh;
+  max-height: 65vh;
   max-width: 70vw;
   margin-left: auto;
   margin-right: auto;
@@ -68,7 +68,7 @@ const HomePage = () => {
               <TableCell align="left">
                 <StyledFontDiv>COVER</StyledFontDiv>
               </TableCell>
-              <TableCell align="center">
+              <TableCell align="left">
                 <StyledFontDiv>TITLE</StyledFontDiv>
               </TableCell>
               <TableCell>

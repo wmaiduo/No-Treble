@@ -106,7 +106,7 @@ const SearchPageCard = (props) => {
           />
         )}
       </TableCell>
-      <TableCell align="center">
+      <TableCell align="left">
         <StyledFontDiv>{props.title}</StyledFontDiv>
       </TableCell>
       <TableCell>

@@ -56,7 +56,7 @@ const SearchPage = () => {
                 <TableCell align="left">
                   <StyledFontDiv>COVER</StyledFontDiv>
                 </TableCell>
-                <TableCell align="center">
+                <TableCell align="left">
                   <StyledFontDiv>TITLE</StyledFontDiv>
                 </TableCell>
                 <TableCell>

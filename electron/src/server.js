@@ -1,4 +1,5 @@
-require('dotenv').config();
+const path = require('path');
+require('dotenv').config({ path: path.resolve(__dirname, '../.env') });
 const fs = require('fs');
 const express = require("express");
 
@@ -7,7 +8,7 @@ app.use(express.json());
 
 const { MongoClient } = require("mongodb");
 const mongo = require("mongodb");
-const uri = `mongodb+srv://default:Y7icBwKOAqCHRSXb@no-treble.sqmlw.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`;
+const uri = `mongodb+srv://default:${process.env.mongoDB}@no-treble.sqmlw.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`;
 
 app.all('*', function(req, res, next) {
   res.header('Access-Control-Allow-Origin', '*');

@@ -5,9 +5,10 @@ import styled from "styled-components";
 
 import FavoritesPageCard from "./FavoritesPageCard";
 import Loading from "./Loading";
+import StyledButton from "./StyledButton";
 
 import { ActivesContext } from "../providers/ActiveProvider";
-import { CurrentPlaylistContext } from "../providers/currentPlaylistProvider";
+import { SearchContext } from "../providers/SearchProvider";
 
 import {
   TableContainer,
@@ -17,10 +18,6 @@ import {
   TableRow,
   TableCell,
 } from "@mui/material";
-
-import PlayCircleOutline from "@mui/icons-material/PlayCircleOutline";
-import BarChart from "@mui/icons-material/BarChart";
-import Replay from "@mui/icons-material/Replay"
 
 const StyledTableContainer = styled(TableContainer)`
   max-height: 70vh;
@@ -35,39 +32,21 @@ const StyledFontDiv = styled.div`
   font-size: large;
 `;
 
-const StyledButton = styled.button`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: ${(props) => props.theme.primary};
-  margin-left: 5vw;
-  margin-bottom: 2vh;
-  height: 4vh;
-  width: 13vw;
-  max-width: 200px;
-  min-width: 100px;
-  border-radius: 1em;
-  border: 0;
-  color: ${(props) => props.theme.tertiary};
-  font-family: "Open Sans", sans-serif;
-  font-size: 2vh;
-`;
-
 const FavoritesPage = () => {
   const { active } = useContext(ActivesContext);
-  const { replaceCurrentPlaylist } = useContext(CurrentPlaylistContext);
+  const { favorites } = useContext(SearchContext)
+
   const [axiosState, setAxiosState] = useState({
     state: "Loading",
     data: [],
   });
-  const [buttonState, setButtonState] = useState("listen");
 
   if (active === "favorites" && axiosState.state === "Loading") {
     Promise.resolve(axios.get("http://localhost:8080/favourites")).then(
       (res) => {
         setAxiosState({
           state: "Acquired",
-          data: res.data,
+          data: res.data.reverse(),
         });
       }
     );
@@ -75,7 +54,7 @@ const FavoritesPage = () => {
 
   let FavoritesPageCards;
   if (axiosState.state === "Acquired") {
-    FavoritesPageCards = axiosState.data.map((datum) => (
+    FavoritesPageCards = favorites.map((datum) => (
       <FavoritesPageCard
         key={datum._id}
         id={datum._id}
@@ -87,54 +66,10 @@ const FavoritesPage = () => {
     ));
   }
 
-  const onPlayHandler = () => {
-    setButtonState("playing");
-    replaceCurrentPlaylist(axiosState.data);
-  }
-
   return (
     <React.Fragment>
       {axiosState.state === "Acquired" ? (
-        <StyledButton
-          onClick={onPlayHandler}
-          onMouseEnter={() => {
-            if (buttonState !== "playing") {
-              setButtonState("play");
-            } else {
-              setButtonState("replay");
-            }
-          }}
-          onMouseLeave={() => {
-            if (buttonState === "play") {
-              setButtonState("listen");
-            };
-            if (buttonState === "replay") {
-              setButtonState("playing")
-            }
-          }}
-        >
-          {buttonState === "listen" ? (
-            <React.Fragment>
-              LISTEN
-              <PlayCircleOutline />
-            </React.Fragment>
-          ) : buttonState === "playing" ? (
-            <React.Fragment>
-              PLAYING
-              <BarChart />
-            </React.Fragment>
-          ) : buttonState === "play" ? (
-            <React.Fragment>
-              PLAY ALL
-              <PlayCircleOutline />
-            </React.Fragment>
-          ) : buttonState === "replay" ? (
-            <React.Fragment>
-              REPLAY
-              <Replay />
-            </React.Fragment>
-          ) : null}
-        </StyledButton>
+        <StyledButton playlist={axiosState.data} />
       ) : null}
       {axiosState.state === "Acquired" ? (
         <StyledTableContainer>
@@ -158,7 +93,7 @@ const FavoritesPage = () => {
           </Table>
         </StyledTableContainer>
       ) : (
-          <Loading type={"spokes"}/>
+        <Loading type={"spokes"} />
       )}
     </React.Fragment>
   );

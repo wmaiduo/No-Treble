@@ -16,6 +16,7 @@ export default function ThemingProvider(props) {
     tertiary: "#F5FFFA",
     background: "#112035",
     favorite: "#EE4B2B",
+    hover: "#587B7F",
   };
 
   const light = {
@@ -26,6 +27,7 @@ export default function ThemingProvider(props) {
     tertiary: "#006D77",
     background: "#EDF6F9",
     favorite: "#DA70D6",
+    hover: "#808080",
   };
 
   const [theme, setTheme] = useState(dark);

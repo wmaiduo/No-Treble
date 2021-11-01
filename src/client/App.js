@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 
-import styled, { createGlobalStyle, ThemeProvider } from "styled-components";
+import { createGlobalStyle, ThemeProvider } from "styled-components";
 
 import "./app.css";
 import Sidebar from "./components/Sidebar";
@@ -8,11 +8,10 @@ import MusicPlayer from "./components/MusicPlayer";
 import Search from "./components/Search";
 import SearchPage from "./components/SearchPage";
 import FavoritesPage from "./components/FavoritesPage";
-import Loading from "./components/Loading";
+import ArtistsPage from "./components/ArtistsPage";
 
 import { ThemingContext } from "./providers/ThemingProvider";
 import { ActivesContext } from "./providers/ActiveProvider";
-import Artists from './components/Artists'
 
 const GlobalStyle = createGlobalStyle`
   body {
@@ -31,10 +30,12 @@ const App = () => {
   const { active } = useContext(ActivesContext);
 
   let activePage;
-  if (active === "search") {
+  if (active === "home") {
     activePage = <SearchPage />;
   } else if (active === "favorites") {
     activePage = <FavoritesPage />;
+  } else if (active === "artists") {
+    activePage = <ArtistsPage />;
   }
   else if (active === "artists") {
     activePage = <Artists/>;
@@ -52,7 +53,7 @@ const App = () => {
           </div>
           <MusicPlayer />
         </div>
-      </ThemeProvider>     
+      </ThemeProvider>
     </React.Fragment>
   );
 };

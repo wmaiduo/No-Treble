@@ -12,6 +12,8 @@ import { Avatar, IconButton } from "@mui/material";
 import { TableRow, TableCell } from "@mui/material";
 
 import { CurrentPlaylistContext } from "../providers/currentPlaylistProvider";
+import { ActivesContext } from "../providers/ActiveProvider";
+import { SearchContext } from "../providers/SearchProvider";
 
 const StyledTableRow = styled(TableRow)`
   height: 5vh;
@@ -36,6 +38,8 @@ const FavoritesPageCard = (props) => {
   const { addSongsToCurrentPlaylist, replaceCurrentPlaylist } = useContext(
     CurrentPlaylistContext
   );
+  const { setActive } = useContext(ActivesContext);
+  const { setSearch } = useContext(SearchContext);
   const [deleted, setDeleted] = useState({ state: false });
   const [hover, setHover] = useState(null);
   const onPlayHandler = () => {
@@ -101,7 +105,10 @@ const FavoritesPageCard = (props) => {
           <TableCell align="center">
             <StyledFontDiv>{props.title}</StyledFontDiv>
           </TableCell>
-          <TableCell>
+          <TableCell onClick={() => {
+            setSearch({value: props.artist});
+            setActive("artists");
+          }}>
             <StyledFontDiv>{props.artist}</StyledFontDiv>
           </TableCell>
           <TableCell align="right">

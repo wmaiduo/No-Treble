@@ -28,8 +28,7 @@ const Cancel = styled(cancel)`
 `;
 
 const Search = () => {
-  const [search, setSearch] = useState({ value: "" });
-  const { setMusicData, setArtistData, setFavoritesData } =
+  const { setMusicData, setArtistData, setFavoritesData, search, setSearch } =
     useContext(SearchContext);
   const { active } = useContext(ActivesContext);
 
@@ -65,15 +64,13 @@ const Search = () => {
 
   useEffect(() => {
     const timeOutID = setTimeout(() => {
-      axios
-        .get("http://localhost:8080/favourites")
-        .then((res) => {
-          if (search.value === "") {
-            setFavoritesData(res.data.reverse());
-          } else {
-            setFavoritesData(returnClosestTracksArray(search.value, res.data))
-          }
-        });
+      axios.get("http://localhost:8080/favourites").then((res) => {
+        if (search.value === "") {
+          setFavoritesData(res.data.reverse());
+        } else {
+          setFavoritesData(returnClosestTracksArray(search.value, res.data));
+        }
+      });
     }, 250);
     return () => clearTimeout(timeOutID);
   }, [search]);
@@ -84,7 +81,7 @@ const Search = () => {
   } else if (active === "artists") {
     placeHolder = "Find Your Favorite Artist";
   } else if (active === "favorites") {
-    placeHolder = "Find Your Song In Your Favorite Playlist"
+    placeHolder = "Find Your Song In Your Favorite Playlist";
   }
 
   return (

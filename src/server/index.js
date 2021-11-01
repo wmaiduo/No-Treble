@@ -7,7 +7,7 @@ app.use(express.json());
 
 const { MongoClient } = require("mongodb");
 const mongo = require("mongodb");
-const uri = `mongodb+srv://default:${process.env.mongoDB}@no-treble.sqmlw.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`;
+const uri = process.env.mongoDB;
 
 // test database connection and list all collections (databases)
 async function listDatabases(client) {

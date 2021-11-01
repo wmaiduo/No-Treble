@@ -23,6 +23,13 @@ const StyledTableContainer = styled(TableContainer)`
   margin-right: auto;
 `;
 
+const StyledHeadDiv = styled.div`
+  color: ${(props) => props.theme.tertiary};
+  font-family: "Oswald", sans-serif;
+  font-size: 4vh;
+  margin-left: 5vw;
+`;
+
 const StyledFontDiv = styled.div`
   color: ${(props) => props.theme.primary};
   font-family: "Alfa Slab One", cursive;
@@ -53,6 +60,7 @@ const HomePage = () => {
   return (
     <React.Fragment>
       <StyledButton playlist={deezerToPlayList(topMusicData)} />
+      <StyledHeadDiv>TOP TRACKS TODAY</StyledHeadDiv>
       <StyledTableContainer>
         <Table>
           <TableHead>

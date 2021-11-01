@@ -38,7 +38,6 @@ const StyledFontDiv = styled.div`
 
 const FavoritesPage = () => {
   const { active } = useContext(ActivesContext);
-  const { replaceCurrentPlaylist } = useContext(CurrentPlaylistContext);
   const [axiosState, setAxiosState] = useState({
     state: "Loading",
     data: [],
@@ -68,10 +67,6 @@ const FavoritesPage = () => {
       />
     ));
   }
-
-  const onPlayHandler = () => {
-    replaceCurrentPlaylist(axiosState.data);
-  };
 
   return (
     <React.Fragment>

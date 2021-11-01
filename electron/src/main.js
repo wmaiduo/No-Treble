@@ -19,12 +19,7 @@ const createWindow = () => {
     webPreferences: {
       nodeIntegration: true
     },
-    icon: 'icons/icon.png',
-    titleBarStyle: 'hidden',
-    titleBarOverlay: {
-      color: "#0000",
-      symbolColor: "#FFF"
-    }
+    icon: 'icons/icon.png'
   });
 
   // and load the index.html of the app.

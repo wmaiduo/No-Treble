@@ -1,40 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Monoton&family=Open+Sans:wght@500&family=Space+Mono&display=swap');
 
-.drag {
-  app-region: drag;
-  -webkit-app-region: drag;
-}
-#titleBarContainer {
-  position: absolute;
-  top: env(titlebar-area-y, 0);
-  height: env(titlebar-area-height, var(--fallback-title-bar-height));
-  width: 100%;
-}
-#titleBar {
-  position: absolute;
-  top: 0;
-  display: flex;
-  user-select: none;
-  height: 100%;
-  left: env(titlebar-area-x, 0);
-  width: env(titlebar-area-width, 100%);
-
-  color: #FFFFFF;
-  font-weight: bold;
-  text-align: center;
-}
-#titleBar > span {
-  margin: auto;
-  padding: 0px 16px 0px 16px;
-}
-#titleBar > input {
-  flex: 1;
-  margin: 8px;
-  border-radius: 5px;
-  border: none;
-  padding: 8px;
-}
-
 .sidebar {
   margin: 0;
   padding: 0;

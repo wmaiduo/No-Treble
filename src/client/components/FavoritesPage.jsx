@@ -67,7 +67,7 @@ const FavoritesPage = () => {
       (res) => {
         setAxiosState({
           state: "Acquired",
-          data: res.data,
+          data: res.data.reverse(),
         });
       }
     );

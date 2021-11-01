@@ -1,12 +1,12 @@
-import React, { createContext, useState } from "react";
-
-import { dummyData1 } from "../../dummy_database/dummyAudioListPaths";
+import React, { createContext, useState, useEffect } from "react";
+import axios from "axios";
 
 export const CurrentPlaylistContext = createContext();
 
 export default function CurrentPlaylistProvider(props) {
   //initialize currentAudioList with dummyData1
-  const [currentAudioLists, setCurrentAudioLists] = useState(dummyData1);
+  const [currentAudioLists, setCurrentAudioLists] = useState([]);
+
   //set options for the Music Player in components/MusicPlayer
   const [options, setOptions] = useState({
     theme: "dark",
@@ -15,11 +15,19 @@ export default function CurrentPlaylistProvider(props) {
     autoPlay: false,
     quietUpdate: true,
     clearPriorAudioLists: true,
-    audioLists: currentAudioLists,
+    audioLists: [],
     defaultVolume: 0.5,
     showDownload: false,
     showThemeSwitch: false,
   });
+
+  //initialize the playlist with data in the favorites songs
+  useEffect(() => {
+    axios.get("http://localhost:8080/favourites").then((res) => {
+      setCurrentAudioLists(res.data.reverse());
+      setOptions({ ...options, audioLists: res.data });
+    });
+  }, []);
 
   //use the following function if you want to add songs to the current playlist without stopping the song playing
   //input: array of objects in the format of:

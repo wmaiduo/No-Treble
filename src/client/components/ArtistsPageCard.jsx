@@ -12,7 +12,7 @@ const StyledDiv = styled.div`
   align-items: center;
   height: 150px;
   width: 150px;
-  margin: 5px 5vh 50px 5vh;
+  margin: 5vh 5vh 5vh 5vh;
 `;
 
 const StyledFontDiv = styled.div`
@@ -28,8 +28,8 @@ const ArtistsPageCard = (props) => {
         props.setPageState({ state: "songs", selectedArtistID: props.id })
       }
     >
-      <Avatar src={props.image} sx={{ width: 150, height: 150 }} />
-      <StyledFontDiv>{props.name}</StyledFontDiv>
+        <Avatar src={props.image} sx={{ width: 150, height: 150 }} />
+        <StyledFontDiv>{props.name}</StyledFontDiv>
     </StyledDiv>
   );
 };

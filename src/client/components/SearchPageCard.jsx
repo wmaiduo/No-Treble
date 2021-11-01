@@ -18,6 +18,9 @@ import { SearchContext } from "../providers/SearchProvider";
 const StyledTableRow = styled(TableRow)`
   height: 5vh;
   background-color: ${(props) => props.theme.background};
+  :hover {
+    background-color: ${(props) => props.theme.hover}
+  }
 `;
 
 const StyledFontDiv = styled.div`

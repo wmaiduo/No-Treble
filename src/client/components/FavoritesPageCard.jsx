@@ -18,6 +18,9 @@ import { SearchContext } from "../providers/SearchProvider";
 const StyledTableRow = styled(TableRow)`
   height: 5vh;
   background-color: ${(props) => props.theme.background};
+  :hover {
+    background-color: ${(props) => props.theme.hover};
+  }
 `;
 
 const StyledFontDiv = styled.div`
@@ -105,10 +108,12 @@ const FavoritesPageCard = (props) => {
           <TableCell align="center">
             <StyledFontDiv>{props.title}</StyledFontDiv>
           </TableCell>
-          <TableCell onClick={() => {
-            setSearch({value: props.artist});
-            setActive("artists");
-          }}>
+          <TableCell
+            onClick={() => {
+              setSearch({ value: props.artist });
+              setActive("artists");
+            }}
+          >
             <StyledFontDiv>{props.artist}</StyledFontDiv>
           </TableCell>
           <TableCell align="right">

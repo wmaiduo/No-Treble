@@ -1,4 +1,5 @@
-require('dotenv').config();
+const path = require('path');
+require('dotenv').config({ path: path.resolve(__dirname, '../.env') });
 const fs = require('fs');
 const express = require("express");
 
@@ -8,28 +9,6 @@ app.use(express.json());
 const { MongoClient } = require("mongodb");
 const mongo = require("mongodb");
 const uri = process.env.mongoDB;
-
-// test database connection and list all collections (databases)
-async function listDatabases(client) {
-  databasesList = await client.db().admin().listDatabases();
-  console.log("Databases: ");
-  databasesList.databases.forEach(db => console.log(` - ${db.name}`));
-}
-async function main() {
-  const client = new MongoClient(uri);
-  try {
-    await client.connect();
-    await listDatabases(client);
-  }
-  catch (err) {
-    console.error(err);
-  }
-  finally {
-    await client.close();
-  }
-}
-
-main().catch(console.error);
 
 app.all('*', function(req, res, next) {
   res.header('Access-Control-Allow-Origin', '*');
@@ -45,6 +24,10 @@ app.all('*', function(req, res, next) {
 app.listen(process.env.PORT || 8080, () =>
   console.log(`Server listening on port ${process.env.PORT || 8080}!`)
 );
+
+app.get('/', (req, res) => {
+  res.send('Server online!');
+});
 
 // retrieve favourite songs from database
 app.get("/favourites", (req, res) => {

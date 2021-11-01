@@ -8,7 +8,7 @@ import Loading from "./Loading";
 import StyledButton from "./StyledButton";
 
 import { ActivesContext } from "../providers/ActiveProvider";
-import { CurrentPlaylistContext } from "../providers/currentPlaylistProvider";
+import { SearchContext } from "../providers/SearchProvider";
 
 import {
   TableContainer,
@@ -18,10 +18,6 @@ import {
   TableRow,
   TableCell,
 } from "@mui/material";
-
-import PlayCircleOutline from "@mui/icons-material/PlayCircleOutline";
-import BarChart from "@mui/icons-material/BarChart";
-import Replay from "@mui/icons-material/Replay";
 
 const StyledTableContainer = styled(TableContainer)`
   max-height: 70vh;
@@ -38,6 +34,8 @@ const StyledFontDiv = styled.div`
 
 const FavoritesPage = () => {
   const { active } = useContext(ActivesContext);
+  const { favorites } = useContext(SearchContext)
+
   const [axiosState, setAxiosState] = useState({
     state: "Loading",
     data: [],
@@ -56,7 +54,7 @@ const FavoritesPage = () => {
 
   let FavoritesPageCards;
   if (axiosState.state === "Acquired") {
-    FavoritesPageCards = axiosState.data.map((datum) => (
+    FavoritesPageCards = favorites.map((datum) => (
       <FavoritesPageCard
         key={datum._id}
         id={datum._id}
@@ -71,7 +69,7 @@ const FavoritesPage = () => {
   return (
     <React.Fragment>
       {axiosState.state === "Acquired" ? (
-        <StyledButton playlist={axiosState.data}/>
+        <StyledButton playlist={axiosState.data} />
       ) : null}
       {axiosState.state === "Acquired" ? (
         <StyledTableContainer>

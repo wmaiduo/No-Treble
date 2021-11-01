@@ -7,9 +7,10 @@ export default function SearchProvider(props) {
   //initialize with null since the search bar is empty in the beginning
   const [musicData, setMusicData] = useState([]);
   const [artistData, setArtistData] = useState([]);
+  const [favorites, setFavoritesData] = useState([]);
 
   //SetMusicData is used in Search.jsx
-  const ProviderData = { musicData, setMusicData, artistData, setArtistData };
+  const ProviderData = { musicData, setMusicData, artistData, setArtistData, favorites, setFavoritesData };
 
   return (
     <SearchContext.Provider value={ProviderData}>

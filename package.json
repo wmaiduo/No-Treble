@@ -30,6 +30,7 @@
     "react-helmet": "^6.1.0",
     "react-jinke-music-player": "^4.24.2",
     "react-loading": "^2.0.3",
+    "string-similarity": "^4.0.4",
     "styled-components": "^5.3.3"
   },
   "devDependencies": {

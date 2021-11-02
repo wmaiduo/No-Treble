@@ -35,18 +35,18 @@ You can get the fully built windows desktop app by going to our [Latest Release]
 ## Screenshots
 <div style="display: flex">
   <a href='https://github.com/DataFreq/No-Treble'>
-    <img src='images/Home.png' />
+    <img src='images/Home.PNG' />
   </a>
   <a href='https://github.com/DataFreq/No-Treble'>
-    <img src='images/Favorites.png' />
+    <img src='images/Favorites.PNG' />
   </a>
 </div>
 <div style="display: flex">
   <a href='https://github.com/DataFreq/No-Treble'>
-    <img src='images/Search.png' />
+    <img src='images/Search.PNG' />
   </a>
   <a href='https://github.com/DataFreq/No-Treble'>
-    <img src='images/Artists.png' />
+    <img src='images/Artists.PNG' />
   </a>
 </div>
 

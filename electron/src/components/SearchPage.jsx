@@ -2,10 +2,10 @@
 import React, { useContext, useEffect, useState } from "react";
 import styled from "styled-components";
 
-import { SearchContext } from "../providers/SearchProvider";
+import { SearchContext } from "../providers/SearchProvider.js";
 
-import HomePage from "./HomePage";
-import SearchPageCard from "./SearchPageCard";
+import HomePage from "./HomePage.jsx";
+import SearchPageCard from "./SearchPageCard.jsx";
 
 import {
   TableContainer,

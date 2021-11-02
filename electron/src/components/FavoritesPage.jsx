@@ -3,12 +3,12 @@ import React, { useContext, useState } from "react";
 import axios from "axios";
 import styled from "styled-components";
 
-import FavoritesPageCard from "./FavoritesPageCard";
-import Loading from "./Loading";
-import StyledButton from "./StyledButton";
+import FavoritesPageCard from "./FavoritesPageCard.jsx";
+import Loading from "./Loading.jsx";
+import StyledButton from "./StyledButton.jsx";
 
-import { ActivesContext } from "../providers/ActiveProvider";
-import { SearchContext } from "../providers/SearchProvider";
+import { ActivesContext } from "../providers/ActiveProvider.js";
+import { SearchContext } from "../providers/SearchProvider.js";
 
 import {
   TableContainer,

@@ -2,8 +2,8 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 
-import SearchPageCard from "./SearchPageCard";
-import Loading from "./Loading";
+import SearchPageCard from "./SearchPageCard.jsx";
+import Loading from "./Loading.jsx";
 
 import ArrowBack from "@mui/icons-material/ArrowBack";
 

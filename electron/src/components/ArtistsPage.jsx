@@ -1,12 +1,12 @@
 import React, { useState, useContext } from "react";
 import styled from "styled-components";
 
-import { SearchContext } from "../providers/SearchProvider";
+import { SearchContext } from "../providers/SearchProvider.js";
 
-import ArtistsPageCard from "./ArtistsPageCard";
-import ArtistsSongsPage from "./ArtistsSongsPage";
+import ArtistsPageCard from "./ArtistsPageCard.jsx";
+import ArtistsSongsPage from "./ArtistsSongsPage.jsx";
 
-import Loading from "./Loading";
+import Loading from "./Loading.jsx";
 
 const StyledContainer = styled.div`
   height: 75vh;

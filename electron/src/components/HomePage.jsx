@@ -2,10 +2,10 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 
-import SearchPageCard from "./SearchPageCard";
-import StyledButton from "./StyledButton";
+import SearchPageCard from "./SearchPageCard.jsx";
+import StyledButton from "./StyledButton.jsx";
 
-import deezerToPlayList from "../utils/deezerToPlayList";
+import deezerToPlayList from "../utils/deezerToPlayList.js";
 
 import {
   TableContainer,

@@ -33,12 +33,10 @@ You can get the fully built windows desktop app by going to our [Latest Release]
 - Run `npm run dev` to start the server and client.
 #
 ## Screenshots
-<a href='https://github.com/DataFreq/No-Treble'>
-  <img src='images/Home.PNG' width=50%/>
-  <img src='images/Favorites.PNG' width=50%/>
-  <img src='images/Search.PNG' width=50%/>
-  <img src='images/Artists.PNG' width=50%/>
-</a>
+<img src='images/Home.PNG' width=50%/>
+<img src='images/Favorites.PNG' width=50%/>
+<img src='images/Search.PNG' width=50%/>
+<img src='images/Artists.PNG' width=50%/>
 
 # Architecture
 ![](images/Architecture.png)

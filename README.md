@@ -13,13 +13,13 @@
 </div>
 
 # Getting started
-You can get the fully built windows desktop app by going to our [Latest Release](https://github.com/DataFreq/No-Treble/releases). If that is not your style you can build the [electron app](https://github.com/DataFreq/No-Treble/tree/master/electron) or host the [webserver](https://github.com/DataFreq/No-Treble/tree/master/web_app) yourself.
+You can get the fully built windows desktop app by going to our [Latest Release](https://github.com/DataFreq/No-Treble/releases) page. If that is not your style you can build the [electron app](https://github.com/DataFreq/No-Treble/tree/master/electron) or host the [webserver](https://github.com/DataFreq/No-Treble/tree/master/web_app) yourself.
 
 ### Building the Electron app
 - `git clone git@github.com:DataFreq/No-Treble.git`
 - `cd No-Treble/electron`
-- Create an .env and paste the link to a MongoDB database.
-- Create a collection and the collection with the data in [/electron/src/mongoDB/dummyData.json](https://github.com/DataFreq/No-Treble/blob/master/electron/src/mongoDB/dummyData.json)
+- Create an `.env` and paste the link to a MongoDB database.
+- Create a `music` collection in MongoDB and seed the collection with the data from [/electron/src/mongoDB/dummyData.json](https://github.com/DataFreq/No-Treble/blob/master/electron/src/mongoDB/dummyData.json)
 - Run `npm i` to install dependencies.
 - Run `npm run make` to compile the electron application.
 - The complied app will be at /out/no-treble-win32-x64/no-treble.exe
@@ -27,8 +27,8 @@ You can get the fully built windows desktop app by going to our [Latest Release]
 ### Running the web application
 - `git clone git@github.com:DataFreq/No-Treble.git`
 - `cd No-Treble/web_app`
-- Create an .env and paste the link to a MongoDB database.
-- Create a collection and the collection with the data in [/electron/src/mongoDB/dummyData.json](https://github.com/DataFreq/No-Treble/blob/master/electron/src/mongoDB/dummyData.json)
+- Create an `.env` and paste the link to a MongoDB database.
+- Create a `music` collection in MongoDB and seed the collection with the data from [/electron/src/mongoDB/dummyData.json](https://github.com/DataFreq/No-Treble/blob/master/electron/src/mongoDB/dummyData.json)
 - Run `npm i` to install dependencies.
 - Run `npm run dev` to start the server and client.
 #

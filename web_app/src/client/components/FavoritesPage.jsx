@@ -1,5 +1,5 @@
 //this component extracts data from SearchProvider to extract data from API, then each object in the array is passed down to SearchPageCard
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import axios from "axios";
 import styled from "styled-components";
 
@@ -34,23 +34,12 @@ const StyledFontDiv = styled.div`
 
 const FavoritesPage = () => {
   const { active } = useContext(ActivesContext);
-  const { favorites } = useContext(SearchContext)
+  const { favorites, setFavoritesData } = useContext(SearchContext);
 
   const [axiosState, setAxiosState] = useState({
     state: "Loading",
     data: [],
   });
-
-  if (active === "favorites" && axiosState.state === "Loading") {
-    Promise.resolve(axios.get("http://localhost:8080/favourites")).then(
-      (res) => {
-        setAxiosState({
-          state: "Acquired",
-          data: res.data.reverse(),
-        });
-      }
-    );
-  }
 
   let FavoritesPageCards;
   if (axiosState.state === "Acquired") {
@@ -65,6 +54,21 @@ const FavoritesPage = () => {
       />
     ));
   }
+
+  useEffect(() => {
+    if (active === "favorites" && axiosState.state === "Loading") {
+      Promise.resolve(axios.get("http://localhost:8080/favourites")).then(
+        (res) => {
+          console.log(res.data.reverse());
+          setAxiosState({
+            state: "Acquired",
+            data: res.data.reverse(),
+          });
+          setFavoritesData(res.data.reverse());
+        }
+      );
+    }
+  }, []);
 
   return (
     <React.Fragment>

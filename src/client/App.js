@@ -8,7 +8,8 @@ import MusicPlayer from "./components/MusicPlayer";
 import Search from "./components/Search";
 import SearchPage from "./components/SearchPage";
 import FavoritesPage from "./components/FavoritesPage";
-import Loading from "./components/Loading";
+
+
 
 import { ThemingContext } from "./providers/ThemingProvider";
 import { ActivesContext } from "./providers/ActiveProvider";
@@ -43,7 +44,7 @@ const App = () => {
   return (
     <React.Fragment>
       <ThemeProvider theme={theme}>
-        <GlobalStyle />
+        <GlobalStyle />      
         <div className="layout">
           <Sidebar />
           <div className="container">

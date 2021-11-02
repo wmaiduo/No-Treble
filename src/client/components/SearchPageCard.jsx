@@ -34,7 +34,7 @@ const StyledAdd = styled(Add)`
 `;
 const StyledFavorite = styled(Favorite)`
   color: ${(props) =>
-    props.favorited.state ? props.theme.favorite : props.theme.primary};
+    props.favorite.state ? props.theme.favorite : props.theme.primary};
 `;
 
 const SearchPageCard = (props) => {
@@ -43,7 +43,7 @@ const SearchPageCard = (props) => {
   );
   const { setActive } = useContext(ActivesContext);
   const { setSearch } = useContext(SearchContext);
-  const [favorited, setFavorited] = useState({ state: false });
+  const [favorite, setFavorite] = useState({ state: false });
   const [hover, setHover] = useState(null);
   const onPlayHandler = () => {
     replaceCurrentPlaylist([
@@ -80,7 +80,7 @@ const SearchPageCard = (props) => {
         },
       })
     );
-    setFavorited({ state: true });
+    setFavorite({ state: true });
   };
 
   return (
@@ -125,7 +125,7 @@ const SearchPageCard = (props) => {
       </TableCell>
       <TableCell align="right">
         <IconButton onClick={onFavoriteHandler}>
-          <StyledFavorite favorited={favorited} />
+          <StyledFavorite favorite={favorite} />
         </IconButton>
       </TableCell>
     </StyledTableRow>

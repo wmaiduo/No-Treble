@@ -8,7 +8,6 @@ import darkMode from "@mui/icons-material/DarkMode";
 import Home from "@mui/icons-material/Home";
 import Favorite from "@mui/icons-material/Favorite";
 import Person from "@mui/icons-material/Person";
-import Album from "@mui/icons-material/Album";
 
 import { ThemingContext } from "../providers/ThemingProvider";
 import { ActivesContext } from "../providers/ActiveProvider";
@@ -73,7 +72,7 @@ const Span = styled.span`
   }
 `;
 
-const ButtomDiv = styled.div`
+const BottomDiv = styled.div`
   margin-top: auto;
   margin-bottom: 9vh;
   @media screen and (min-width: 561px) {
@@ -159,19 +158,7 @@ function Sidebar() {
           <Person />
           <Span>ARTISTS</Span>
         </Link>
-        <Link
-          href="#"
-          onClick={() => setActive("album")}
-          onMouseEnter={() => setHover("album")}
-          onMouseLeave={() => setHover(null)}
-          linkState={
-            active === "album" ? "active" : hover === "album" ? "hover" : null
-          }
-        >
-          <Album />
-          <Span>ALBUM</Span>
-        </Link>
-        <ButtomDiv>{mode}</ButtomDiv>
+        <BottomDiv>{mode}</BottomDiv>
       </SidebarContainer>
     </React.Fragment>
   );

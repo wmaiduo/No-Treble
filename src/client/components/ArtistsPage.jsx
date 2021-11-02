@@ -1,10 +1,7 @@
-import React, { useEffect, useState, useContext } from "react";
+import React, { useState, useContext } from "react";
 import styled from "styled-components";
 
-import { Paper, Container } from "@mui/material";
-
 import { SearchContext } from "../providers/SearchProvider";
-import { ThemingContext } from "../providers/ThemingProvider";
 
 import ArtistsPageCard from "./ArtistsPageCard";
 import ArtistsSongsPage from "./ArtistsSongsPage";
@@ -28,7 +25,7 @@ const ArtistsPage = () => {
     selectedArtistID: null,
   });
 
-  const artistlist = artistData.map((artistDatum) => (
+  const artistList = artistData.map((artistDatum) => (
     <ArtistsPageCard
       key={artistDatum.id}
       id={artistDatum.id}
@@ -42,7 +39,7 @@ const ArtistsPage = () => {
     <React.Fragment>
       {artistData ? (
         pageState.state === "artists" ? (
-          <StyledContainer>{artistlist}</StyledContainer>
+          <StyledContainer>{artistList}</StyledContainer>
         ) : pageState.state === "songs" ? (
           <ArtistsSongsPage id={pageState.selectedArtistID} setPageState={setPageState}/>
         ) : null

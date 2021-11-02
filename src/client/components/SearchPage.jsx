@@ -6,7 +6,6 @@ import { SearchContext } from "../providers/SearchProvider";
 
 import HomePage from "./HomePage";
 import SearchPageCard from "./SearchPageCard";
-import Loading from "./Loading";
 
 import {
   TableContainer,

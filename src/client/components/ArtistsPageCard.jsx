@@ -3,8 +3,6 @@ import styled from "styled-components";
 
 import { Avatar } from "@mui/material";
 
-import { ThemingContext } from "../providers/ThemingProvider";
-
 const StyledDiv = styled.div`
   display: flex;
   flex-direction: column;

@@ -59,7 +59,6 @@ const FavoritesPage = () => {
     if (active === "favorites" && axiosState.state === "Loading") {
       Promise.resolve(axios.get("http://localhost:8080/favourites")).then(
         (res) => {
-          console.log(res.data.reverse());
           setAxiosState({
             state: "Acquired",
             data: res.data.reverse(),

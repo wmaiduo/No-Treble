@@ -14,9 +14,6 @@ const createWindow = () => {
     height: 650,
     minWidth: 1055,
     minHeight: 650,
-    webPreferences: {
-      nodeIntegration: true
-    },
     icon: 'public/icon.png'
   });
 

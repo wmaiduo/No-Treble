@@ -51,7 +51,6 @@ app.get("/favourites", (req, res) => {
   MongoClient.connect(uri, (err, db) => {
     const collection = db.db('music').collection('favourite')
     if (err) throw err;
-    const dbo = db.db('music');
     collection.find({}).toArray(function(err, result) {
       if (err) throw err;
       res.send(result)

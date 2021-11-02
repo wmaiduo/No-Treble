@@ -17,7 +17,7 @@ const createWindow = () => {
     webPreferences: {
       nodeIntegration: true
     },
-    icon: 'icons/icon.png'
+    icon: 'public/icon.png'
   });
 
   // and load the index.html of the app.

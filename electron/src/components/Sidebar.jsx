@@ -8,7 +8,6 @@ import darkMode from "@mui/icons-material/DarkMode";
 import Home from "@mui/icons-material/Home";
 import Favorite from "@mui/icons-material/Favorite";
 import Person from "@mui/icons-material/Person";
-import Album from "@mui/icons-material/Album";
 
 import { ThemingContext } from "../providers/ThemingProvider";
 import { ActivesContext } from "../providers/ActiveProvider";
@@ -32,9 +31,13 @@ const Heading = styled.h1`
   margin: auto;
   margin-top: 3rem;
   margin-bottom: 3rem;
-  margin-left: 2rem;
+  margin-left: 2vw;
+  margin-right: 2vw;
   font-family: "Monoton", cursive;
-  font-size: 3rem;
+  font-size: 2vw;
+  @media screen and (max-width: 768px) {
+    display: none;
+  }
 `;
 
 const Link = styled.a`
@@ -43,7 +46,6 @@ const Link = styled.a`
   align-items: center;
   flex-wrap: wrap;
   color: ${(props) => props.theme.tertiary};
-  padding: 3vh 3vh 3vh 5vh;
   text-decoration: none;
   background: ${(props) =>
     props.linkState === "active"
@@ -51,15 +53,34 @@ const Link = styled.a`
       : props.linkState === "hover"
       ? props.theme.secondary
       : "transparent"};
+  @media screen and (min-width: 561px) {
+    padding: 3vh 3vh 3vh 5vh;
+  }
+  @media screen and (max-width: 560px) {
+    padding: 0;
+    margin: auto;
+  }
 `;
 
 const Span = styled.span`
-  margin-left: 1em;
-`
-const ButtomDiv = styled.div`
+  margin-left: 2vw;
+  @media screen and (max-width: 1050px) {
+    font-size: 1.2vw;
+  }
+  @media screen and (max-width: 890px) {
+    display: none;
+  }
+`;
+
+const BottomDiv = styled.div`
   margin-top: auto;
   margin-bottom: 9vh;
-  padding-left: 2em;
+  @media screen and (min-width: 561px) {
+    margin-left: 2em;
+  }
+  @media screen and (max-width: 560px) {
+    margin: auto;
+  }
 `;
 
 const DarkMode = styled(darkMode)`
@@ -102,7 +123,8 @@ function Sidebar() {
             active === "home" ? "active" : hover === "home" ? "hover" : null
           }
         >
-          <Home/><Span>HOME</Span>
+          <Home />
+          <Span>HOME</Span>
         </Link>
         <Link
           href="#"
@@ -117,7 +139,8 @@ function Sidebar() {
               : null
           }
         >
-          <Favorite /><Span>FAVORITES</Span>
+          <Favorite />
+          <Span>FAVORITES</Span>
         </Link>
         <Link
           href="#"
@@ -132,20 +155,10 @@ function Sidebar() {
               : null
           }
         >
-          <Person /><Span>ARTISTS</Span>
+          <Person />
+          <Span>ARTISTS</Span>
         </Link>
-        <Link
-          href="#"
-          onClick={() => setActive("album")}
-          onMouseEnter={() => setHover("album")}
-          onMouseLeave={() => setHover(null)}
-          linkState={
-            active === "album" ? "active" : hover === "album" ? "hover" : null
-          }
-        >
-          <Album /><Span>ALBUM</Span>
-        </Link>
-        <ButtomDiv>{mode}</ButtomDiv>
+        <BottomDiv>{mode}</BottomDiv>
       </SidebarContainer>
     </React.Fragment>
   );

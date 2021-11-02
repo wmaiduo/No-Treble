@@ -12,10 +12,15 @@ import { Avatar, IconButton } from "@mui/material";
 import { TableRow, TableCell } from "@mui/material";
 
 import { CurrentPlaylistContext } from "../providers/currentPlaylistProvider";
+import { ActivesContext } from "../providers/ActiveProvider";
+import { SearchContext } from "../providers/SearchProvider";
 
 const StyledTableRow = styled(TableRow)`
   height: 5vh;
   background-color: ${(props) => props.theme.background};
+  :hover {
+    background-color: ${(props) => props.theme.hover}
+  }
 `;
 
 const StyledFontDiv = styled.div`
@@ -29,14 +34,16 @@ const StyledAdd = styled(Add)`
 `;
 const StyledFavorite = styled(Favorite)`
   color: ${(props) =>
-    props.favorited.state ? props.theme.favorite : props.theme.primary};
+    props.favorite.state ? props.theme.favorite : props.theme.primary};
 `;
 
 const SearchPageCard = (props) => {
   const { addSongsToCurrentPlaylist, replaceCurrentPlaylist } = useContext(
     CurrentPlaylistContext
   );
-  const [favorited, setFavorited] = useState({ state: false });
+  const { setActive } = useContext(ActivesContext);
+  const { setSearch } = useContext(SearchContext);
+  const [favorite, setFavorite] = useState({ state: false });
   const [hover, setHover] = useState(null);
   const onPlayHandler = () => {
     replaceCurrentPlaylist([
@@ -73,7 +80,7 @@ const SearchPageCard = (props) => {
         },
       })
     );
-    setFavorited({ state: true });
+    setFavorite({ state: true });
   };
 
   return (
@@ -86,7 +93,7 @@ const SearchPageCard = (props) => {
             onMouseLeave={() => setHover(null)}
           >
             <IconButton onClick={onPlayHandler}>
-              <PlayCircle sx={{ width: 50, height: 50 }}/>
+              <PlayCircle sx={{ width: 50, height: 50 }} />
             </IconButton>
           </Avatar>
         ) : (
@@ -99,11 +106,14 @@ const SearchPageCard = (props) => {
           />
         )}
       </TableCell>
-      <TableCell align="center">
+      <TableCell align="left">
         <StyledFontDiv>{props.title}</StyledFontDiv>
       </TableCell>
       <TableCell>
-        <StyledFontDiv>{props.artist}</StyledFontDiv>
+        <StyledFontDiv onClick={() => {
+          setActive("artists");
+          setSearch({value: props.artist});
+        }}>{props.artist}</StyledFontDiv>
       </TableCell>
       <TableCell>
         <StyledFontDiv>{props.album}</StyledFontDiv>
@@ -115,7 +125,7 @@ const SearchPageCard = (props) => {
       </TableCell>
       <TableCell align="right">
         <IconButton onClick={onFavoriteHandler}>
-          <StyledFavorite favorited={favorited} />
+          <StyledFavorite favorite={favorite} />
         </IconButton>
       </TableCell>
     </StyledTableRow>

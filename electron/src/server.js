@@ -78,7 +78,7 @@ app.post("/delete", (req, res) => {
 // reseed data from mongoDB/dummyData.json
 app.get("/reset", (req, res) => {
   let seedData;
-  fs.readFile('./mongoDB/dummyData.json', 'utf8', (err, data) => {
+  fs.readFile('./src/mongoDB/dummyData.json', 'utf8', (err, data) => {
     if (err) throw err;
     seedData = data;
   });

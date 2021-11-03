@@ -19,7 +19,7 @@ You can get the fully built windows desktop app by going to our [Latest Release]
 - `git clone git@github.com:DataFreq/No-Treble.git`
 - `cd No-Treble/electron`
 - Create an `.env` and paste the link to a MongoDB database.
-- Create a `music` collection in MongoDB and seed the collection with the data from [/electron/src/mongoDB/dummyData.json](https://github.com/DataFreq/No-Treble/blob/master/electron/src/mongoDB/dummyData.json)
+- Create a `music` collection in a `music` MongoDB database and seed the collection with the data from [/electron/src/mongoDB/dummyData.json](https://github.com/DataFreq/No-Treble/blob/master/electron/src/mongoDB/dummyData.json)
 - Run `npm i` to install dependencies.
 - Run `npm run make` to compile the electron application.
 - The complied app will be at /out/no-treble-win32-x64/no-treble.exe
@@ -28,7 +28,7 @@ You can get the fully built windows desktop app by going to our [Latest Release]
 - `git clone git@github.com:DataFreq/No-Treble.git`
 - `cd No-Treble/web_app`
 - Create an `.env` and paste the link to a MongoDB database.
-- Create a `music` collection in MongoDB and seed the collection with the data from [/electron/src/mongoDB/dummyData.json](https://github.com/DataFreq/No-Treble/blob/master/electron/src/mongoDB/dummyData.json)
+- Create a `music` collection in a `music` MongoDB database and seed the collection with the data from [/electron/src/mongoDB/dummyData.json](https://github.com/DataFreq/No-Treble/blob/master/electron/src/mongoDB/dummyData.json)
 - Run `npm i` to install dependencies.
 - Run `npm run dev` to start the server and client.
 #

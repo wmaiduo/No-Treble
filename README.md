@@ -16,7 +16,6 @@
 You can get the fully built windows desktop app by going to our [Latest Release](https://github.com/DataFreq/No-Treble/releases) page. If that is not your style you can build the [electron app](https://github.com/DataFreq/No-Treble/tree/master/electron) or host the [webserver](https://github.com/DataFreq/No-Treble/tree/master/web_app) yourself.
 
 ### Building the Electron app
-- `git clone git@github.com:DataFreq/No-Treble.git`
 - `cd No-Treble/electron`
 - Create an `.env` and paste the link to a MongoDB database.
 - Create a `music` collection in a `music` MongoDB database and seed the collection with the data from [/electron/src/mongoDB/dummyData.json](https://github.com/DataFreq/No-Treble/blob/master/electron/src/mongoDB/dummyData.json)
@@ -25,7 +24,6 @@ You can get the fully built windows desktop app by going to our [Latest Release]
 - The complied app will be at /out/no-treble-win32-x64/no-treble.exe
 
 ### Running the web application
-- `git clone git@github.com:DataFreq/No-Treble.git`
 - `cd No-Treble/web_app`
 - Create an `.env` and paste the link to a MongoDB database.
 - Create a `music` collection in a `music` MongoDB database and seed the collection with the data from [/electron/src/mongoDB/dummyData.json](https://github.com/DataFreq/No-Treble/blob/master/electron/src/mongoDB/dummyData.json)

@@ -9,6 +9,7 @@
   <img alt="GitHub repo size" src="https://img.shields.io/github/repo-size/DataFreq/No-Treble">
   <h1>NoTreble 🎧🎼</h1>
   <p>Allows users to access Deezer api to queue and play songs.</p>
+  <p> Please visit https://no-treble-23672.web.app/ for a live demo of this website.</p>
   <p><b>Note:</b> Due to Deezer's api limitations, you are only able to play a 30s preview of a song.</p>
 </div>
 
